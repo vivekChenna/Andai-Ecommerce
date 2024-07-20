@@ -11,13 +11,19 @@ export function Carousel() {
   // Collections that start with `hidden-*` are hidden from the search page.
   //   const products = await getCollectionProducts({ collection: 'hidden-homepage-carousel' });
 
-  const { data: carouselPlugins, loading, error } = useQuery(GET_ALL_PLUGINS);
+  const {
+    data: carouselPlugins,
+    loading,
+    error,
+  } = useQuery(GET_ALL_PLUGINS, {
+    variables: {
+      where: {},
+    },
+  });
 
   if (loading) {
     return <div className=" w-full text-center my-10">Loading...</div>;
   }
-
-  console.log("carousel plugins", carouselPlugins);
 
   if (carouselPlugins?.plugins?.length === 0) return null;
 

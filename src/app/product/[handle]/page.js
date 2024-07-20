@@ -43,7 +43,6 @@ export default function ProductPage({ params }) {
   //     }
   //   };
 
-  console.log("single params", params);
 
   const { data, error, loading } = useQuery(GET_SINGLE_PLUGIN_INFORMATION, {
     variables: {
@@ -56,8 +55,6 @@ export default function ProductPage({ params }) {
   if (loading) {
     return <div className=" w-full text-center">Loading...</div>;
   }
-
-  console.log("single product data", data);
 
   return (
     <>

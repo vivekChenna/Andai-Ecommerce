@@ -1,6 +1,5 @@
 "use client";
 
-
 import Grid from "@/components/grid";
 import ProductGridItems from "@/components/layout/product-grid-items";
 import { GET_FILTERED_PLUGINS, GET_PLUGINS_BY_CATEGORY } from "@/lib/queries";
@@ -47,7 +46,6 @@ export default function CategoryPage({ params, searchParams }) {
   }
 
   const plugins = data?.plugins || [];
-
 
   return (
     <section>

@@ -12,64 +12,20 @@ export default function SearchPage({ searchParams }) {
   // const { sortKey, reverse } = sorting.find((item) => item.slug === sort) || defaultSort;
 
   // const products = await getProducts({ sortKey, reverse, query: searchValue });
-  //   const products = [
-  //     {
-  //       title: "plugin 01",
-  //       featuredImage: {
-  //         url: "/svg/product.svg",
-  //       },
-  //     },
-  //     {
-  //       title: "plugin 01",
-  //       featuredImage: {
-  //         url: "/svg/product.svg",
-  //       },
-  //     },
-  //     {
-  //       title: "plugin 01",
-  //       featuredImage: {
-  //         url: "/svg/product.svg",
-  //       },
-  //     },
-  //     {
-  //       title: "plugin 01",
-  //       featuredImage: {
-  //         url: "/svg/product.svg",
-  //       },
-  //     },
-  //     {
-  //       title: "plugin 01",
-  //       featuredImage: {
-  //         url: "/svg/product.svg",
-  //       },
-  //     },
-  //     {
-  //       title: "plugin 01",
-  //       featuredImage: {
-  //         url: "/svg/product.svg",
-  //       },
-  //     },
-  //     {
-  //       title: "plugin 01",
-  //       featuredImage: {
-  //         url: "/svg/product.svg",
-  //       },
-  //     },
-  //     {
-  //       title: "plugin 01",
-  //       featuredImage: {
-  //         url: "/svg/product.svg",
-  //       },
-  //     },
-  //     {
-  //       title: "plugin 01",
-  //       featuredImage: {
-  //         url: "/svg/product.svg",
-  //       },
-  //     },
-  //   ];
 
-  const { data: AllPlugins, error, loading } = useQuery(GET_ALL_PLUGINS);
+
+
+  const {
+    data: AllPlugins,
+    error,
+    loading,
+  } = useQuery(GET_ALL_PLUGINS, {
+    variables: {
+      where: {
+        ...(searchValue ? { title: { _ilike: `%${searchValue}%` } } : {}),
+      },
+    },
+  });
 
   if (loading) {
     return <div>Loading..</div>;
@@ -83,7 +39,7 @@ export default function SearchPage({ searchParams }) {
       {searchValue ? (
         <p className="mb-4">
           {plugins.length === 0
-            ? "There are no products that match "
+            ? "There are no plugins that match "
             : `Showing ${plugins.length} ${resultsText} for `}
           <span className="font-bold">&quot;{searchValue}&quot;</span>
         </p>

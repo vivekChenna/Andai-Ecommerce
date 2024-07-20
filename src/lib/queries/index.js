@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const GET_ALL_PLUGINS = gql`
-  query getAllPlugins {
-    plugins {
+  query getAllPlugins($where: plugins_bool_exp!) {
+    plugins(where: $where) {
       title
       amount
       currencyCode
