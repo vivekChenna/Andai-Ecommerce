@@ -9,7 +9,7 @@ export default function NotFound() {
     <div className="mx-auto my-4 flex max-w-xl flex-col rounded-lg border border-neutral-200 bg-white p-8 md:p-12 dark:border-neutral-800 dark:bg-black">
       <h2 className="text-xl font-bold">Oh no!</h2>
       <p className="my-2">
-        Sorry , we could n't find the page you're looking for
+        Sorry, we couldn&apos;t find the page you&apos;re looking for
       </p>
 
       <button
