@@ -35,6 +35,8 @@ export const GET_SINGLE_PLUGIN_INFORMATION = gql`
       description
       category_id
       img_url
+      docs_url
+      Web_url
     }
   }
 `;
