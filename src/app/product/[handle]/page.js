@@ -43,7 +43,6 @@ export default function ProductPage({ params }) {
   //     }
   //   };
 
-
   const { data, error, loading } = useQuery(GET_SINGLE_PLUGIN_INFORMATION, {
     variables: {
       where: {
@@ -66,7 +65,9 @@ export default function ProductPage({ params }) {
                 <div className="relative aspect-square h-full max-h-[550px] w-full overflow-hidden" />
               }
             >
-              <Gallery image={data?.plugins[0]?.img_url || `/svg/product.svg`} />
+              <Gallery
+                image={data?.plugins[0]?.img_url || `/svg/product.svg`}
+              />
             </Suspense>
           </div>
 
@@ -122,7 +123,7 @@ function RelatedProducts({ id, filterId }) {
                   amount: product?.amount,
                   currencyCode: product?.currencyCode,
                 }}
-                src={"/svg/product.svg"}
+                src={product?.img_url || "/svg/product.svg"}
                 fill
                 sizes="(min-width: 1024px) 20vw, (min-width: 768px) 25vw, (min-width: 640px) 33vw, (min-width: 475px) 50vw, 100vw"
               />
