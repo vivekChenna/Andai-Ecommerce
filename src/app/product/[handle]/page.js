@@ -66,7 +66,7 @@ export default function ProductPage({ params }) {
                 <div className="relative aspect-square h-full max-h-[550px] w-full overflow-hidden" />
               }
             >
-              <Gallery image={"/svg/product.svg"} />
+              <Gallery image={data?.plugins[0]?.img_url || `/svg/product.svg`} />
             </Suspense>
           </div>
 

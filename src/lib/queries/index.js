@@ -2,23 +2,25 @@ import { gql } from "@apollo/client";
 
 export const GET_ALL_PLUGINS = gql`
   query getAllPlugins($where: plugins_bool_exp!) {
-    plugins(where: $where) {
+    plugins(where: $where, order_by: { title: asc }) {
       title
       amount
       currencyCode
       id
       Inhouse
+      img_url
     }
   }
 `;
 
 export const GET_FILTERED_PLUGINS = gql`
   query getFilteredPlugins($where: plugins_bool_exp!) {
-    plugins(where: $where) {
+    plugins(where: $where, order_by: { title: asc }) {
       title
       amount
       currencyCode
       id
+      img_url
     }
   }
 `;
@@ -32,13 +34,14 @@ export const GET_SINGLE_PLUGIN_INFORMATION = gql`
       id
       description
       category_id
+      img_url
     }
   }
 `;
 
 export const GET_ALL_PLUGIN_CATEGORIES = gql`
   query getAllPluginCategories {
-    plugins_category {
+    plugins_category(order_by: { category: asc }) {
       id
       category
     }
@@ -65,6 +68,7 @@ export const GET_HOME_PAGE_PLUGINS = gql`
       currencyCode
       id
       description
+      img_url
     }
   }
 `;

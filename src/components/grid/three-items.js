@@ -19,7 +19,7 @@ function ThreeItemGridItem({ item, size, priority }) {
         href={`/product/${item?.id}`}
       >
         <GridTileImage
-          src={'/svg/product.svg'}
+          src={item?.img_url || "/svg/product.svg"}
           fill
           sizes={
             size === "full"
@@ -50,7 +50,6 @@ export function ThreeItemGrid() {
   if (loading) {
     return <div className=" w-full text-center">Loading...</div>;
   }
-
 
   const homePagePlugins = data?.plugins || [];
 

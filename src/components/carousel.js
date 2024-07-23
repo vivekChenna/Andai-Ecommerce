@@ -49,7 +49,7 @@ export function Carousel() {
                     currencyCode:
                       plugin?.priceRange?.maxVariantPrice?.currencyCode,
                   }}
-                  src={"/svg/product.svg"}
+                  src={plugin?.img_url || "/svg/product.svg"}
                   fill
                   sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
                 />

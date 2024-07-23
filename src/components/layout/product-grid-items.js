@@ -16,7 +16,7 @@ export default function ProductGridItems({ products }) {
                 amount: product?.amount,
                 currencyCode: product?.currencyCode
               }}
-              src={"/svg/product.svg"}
+              src={product?.img_url || "/svg/product.svg"}
               fill
               sizes="(min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
             />
