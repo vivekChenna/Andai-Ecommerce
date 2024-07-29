@@ -1,5 +1,6 @@
 // import { AddToCart } from 'components/cart/add-to-cart';
 import Price from "@/components/price";
+import Link from "next/link";
 // import Prose from 'components/prose';
 // import { Product } from 'lib/shopify/types';
 // import { Suspense } from 'react';
@@ -12,20 +13,26 @@ export function ProductDescription({ product }) {
         <h1 className="mb-2 md:text-4xl text-xl font-medium">
           {product?.title}
         </h1>
-        <div className=" flex items-center">
-          <div className="mr-auto w-auto rounded-full bg-blue-600 p-2 text-sm text-white">
-            <Price
+        <div className=" flex items-center justify-between">
+            <div className="mr-auto w-auto rounded-full bg-blue-600 p-2 text-sm text-white">
+          <Link href={`https://docs.google.com/forms/d/e/1FAIpQLScfOhn111VpB2DB09HYpOSqyh3VKNMHORXyMugR2mndNsNRvw/viewform`} target="_blank">
+              {/* <Price
               amount={product?.amount}
               currencyCode={product?.currencyCode}
-            />
+              /> */}
+              Pricing
+          </Link>
+            </div>
+          <div className="mr-auto w-auto rounded-full bg-blue-600 p-2 text-sm text-white">
+            <a href={product?.docs_url} target="_blank">
+              DOCS
+            </a>
           </div>
           <div className="mr-auto w-auto rounded-full bg-blue-600 p-2 text-sm text-white">
-            <a href={product?.docs_url} target="_blank" >DOCS</a>
+            <a href={product?.Web_url} target="_blank">
+              DEMO
+            </a>
           </div>
-          <div className="mr-auto w-auto rounded-full bg-blue-600 p-2 text-sm text-white">
-            <a href={product?.Web_url} target="_blank" >DEMO</a>
-          </div>
-
         </div>
       </div>
       <div className=" font-medium">{product?.description}</div>
