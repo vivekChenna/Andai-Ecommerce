@@ -25,6 +25,10 @@ export default async function Navbar() {
       title: "Vendor",
       path: "/search/vendor",
     },
+    {
+      title : "Talk to AI",
+      path : "/completion"
+    }
   ];
 
   return (
