@@ -26,15 +26,17 @@ export default async function Navbar() {
       path: "/search/vendor",
     },
     {
-      title : "Talk to AI",
-      path : "/completion"
-    }
+      title: "Talk to AI",
+      path: "/completion",
+    },
   ];
 
   return (
     <nav className="relative flex items-center justify-between p-4 lg:px-6">
       <div className="block flex-none md:hidden">
-        <Suspense fallback={null}><MobileMenu menu={menu} /></Suspense>
+        <Suspense fallback={null}>
+          <MobileMenu menu={menu} />
+        </Suspense>
       </div>
       <div className="flex w-full items-center">
         <div className="flex w-full md:w-1/3">
@@ -43,7 +45,10 @@ export default async function Navbar() {
             className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
           >
             {/* <LogoSquare /> */}
-            <img src="https://andai.co.in/images/logo.png" className="w-10 h-10" />
+            <img
+              src="https://andai.co.in/images/logo.png"
+              className="w-10 h-10"
+            />
             <div className="ml-2 flex-none text-sm font-medium uppercase md:hidden lg:block">
               {"And Ai"}
             </div>
@@ -74,6 +79,13 @@ export default async function Navbar() {
           </Suspense>
         </div> */}
       </div>
+      <Link href={`https://share.hsforms.com/1xnAsoonbSDKLmfRgEq9XQwrplpw`} target="_blank" >
+        <button
+          className=" bg-indigo-500 py-1.5 px-2 hover:bg-indigo-600 transition-all ease-in-out duration-200 rounded-md text-white text-sm font-medium"
+        >
+          SUBSCRIBE
+        </button>
+      </Link>
     </nav>
   );
 }
