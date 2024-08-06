@@ -51,7 +51,8 @@ export async function POST(req) {
   // Edit the text to match the prompt, and only respond with the full edited version of the text - do not include any other information, context, or explanation. If you add on to the text, respond with the full version, not just the new portion. Do not include the prompt or otherwise preface your response. Do not enclose the response in quotes.
 
   const result = await streamText({
-    model: groq("llama3-8b-8192"),
+    // model: groq("llama3-8b-8192"),
+    model: groq("llama-3.1-8b-instant"),
     system: `
     you are a AI plugin Advisor , You will be given a prompt and a text to edit, which may be empty or incomplete. Edit the text to match the prompt, and only respond with the full edited version of the text - do not include any other information, context, or explanation. If you add on to the text, respond with the full version, not just the new portion. Do not include the prompt or otherwise preface your response. Do not enclose the response in quotes.
 
