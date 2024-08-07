@@ -1,3 +1,5 @@
+"use client";
+
 // import Cart from 'components/cart';
 // import OpenCart from 'components/cart/open-cart';
 import LogoSquare from "@/components/logo-square";
@@ -7,9 +9,14 @@ import { Suspense } from "react";
 import Search, { SearchSkeleton } from "./search";
 import Image from "next/image";
 import MobileMenu from "./mobile-menu";
+import {
+  RegisterLink,
+  LoginLink,
+  LogoutLink,
+} from "@kinde-oss/kinde-auth-nextjs/components";
 // const { SITE_NAME } = process.env;
 
-export default async function Navbar() {
+export default function Navbar({ isAuthenticated, user }) {
   //   const menu = await getMenu('next-js-frontend-header-menu');
 
   const menu = [
@@ -35,7 +42,7 @@ export default async function Navbar() {
     <nav className="relative flex items-center justify-between p-4 lg:px-6">
       <div className="block flex-none md:hidden">
         <Suspense fallback={null}>
-          <MobileMenu menu={menu} />
+          <MobileMenu menu={menu} isAuthenticated={isAuthenticated} />
         </Suspense>
       </div>
       <div className="flex w-full items-center">
@@ -79,13 +86,30 @@ export default async function Navbar() {
           </Suspense>
         </div> */}
       </div>
-      <Link href={`https://share.hsforms.com/1xnAsoonbSDKLmfRgEq9XQwrplpw`} target="_blank" >
-        <button
-          className=" bg-indigo-500 py-1.5 px-2 hover:bg-indigo-600 transition-all ease-in-out duration-200 rounded-md text-white text-sm font-medium"
+      <div className=" flex flex-row items-center">
+        {isAuthenticated ? (
+          <LogoutLink className=" md:block hidden min-w-max mr-3 bg-gray-200 rounded-md px-2 py-1">
+            Log out
+          </LogoutLink>
+        ) : (
+          <div className=" md:flex items-center hidden">
+            <div className=" min-w-max mr-3 bg-gray-200 rounded-md px-2 py-1">
+              <LoginLink>Sign in</LoginLink>
+            </div>
+            <div className=" min-w-max mr-3 bg-gray-200 rounded-md px-2 py-1">
+              <RegisterLink>Sign up</RegisterLink>
+            </div>
+          </div>
+        )}
+        <Link
+          href={`https://share.hsforms.com/1xnAsoonbSDKLmfRgEq9XQwrplpw`}
+          target="_blank"
         >
-          SUBSCRIBE
-        </button>
-      </Link>
+          <button className=" bg-indigo-500 py-1.5 px-2 hover:bg-indigo-600 transition-all ease-in-out duration-200 rounded-md text-white text-sm font-medium">
+            SUBSCRIBE
+          </button>
+        </Link>
+      </div>
     </nav>
   );
 }

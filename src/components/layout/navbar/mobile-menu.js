@@ -1,14 +1,19 @@
-'use client';
+"use client";
 
-import { Dialog, Transition } from '@headlessui/react';
-import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
-import { Fragment, Suspense, useEffect, useState } from 'react';
+import { Dialog, Transition } from "@headlessui/react";
+import Link from "next/link";
+import { usePathname, useSearchParams } from "next/navigation";
+import { Fragment, Suspense, useEffect, useState } from "react";
+import {
+  RegisterLink,
+  LoginLink,
+  LogoutLink,
+} from "@kinde-oss/kinde-auth-nextjs/components";
 
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import Search, { SearchSkeleton } from './search';
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import Search, { SearchSkeleton } from "./search";
 
-export default function MobileMenu({ menu }) {
+export default function MobileMenu({ menu, isAuthenticated }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
@@ -21,8 +26,8 @@ export default function MobileMenu({ menu }) {
         setIsOpen(false);
       }
     };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, [isOpen]);
 
   useEffect(() => {
@@ -75,6 +80,16 @@ export default function MobileMenu({ menu }) {
                     <Search />
                   </Suspense>
                 </div>
+                {!isAuthenticated && (
+                  <div className=" flex flex-col">
+                    <LoginLink className="py-2 text-xl text-black transition-colors hover:text-neutral-500 dark:text-white">
+                      Sign in
+                    </LoginLink>
+                    <RegisterLink className="py-2 text-xl text-black transition-colors hover:text-neutral-500 dark:text-white">
+                      Sign up
+                    </RegisterLink>
+                  </div>
+                )}
                 {menu.length ? (
                   <ul className="flex w-full flex-col">
                     {menu.map((item) => (
@@ -89,6 +104,9 @@ export default function MobileMenu({ menu }) {
                     ))}
                   </ul>
                 ) : null}
+                <LogoutLink className="py-2 text-xl text-black transition-colors hover:text-neutral-500 dark:text-white mt-4">
+                Log out
+              </LogoutLink>
               </div>
             </Dialog.Panel>
           </Transition.Child>
