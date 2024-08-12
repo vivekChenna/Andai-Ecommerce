@@ -26,10 +26,6 @@ export default function SuggestionPage() {
     api: "/api/completion",
   });
 
-  // useEffect(() => {
-  //   console.log("called");
-  //   setMyText(completion.trim());
-  // }, [completion]);
 
   return (
     <form
@@ -41,11 +37,7 @@ export default function SuggestionPage() {
     >
       <TextareaAutosize
         value={isLoading && completion.length > 0 ? completion.trim() : myText}
-        // value={completion}
         readOnly
-        // onChange={(e) => {
-        //   if (!isLoading) setText(e.target.value);
-        // }}
         className="rounded-lg drop-shadow-sm bg-gray-100 border border-gray-200 px-2 pt-2 pb-6 md:resize dark:bg-gray-900 dark:border-gray-800 min-w-full max-w-7xl md:min-w-96 min-h-56 md:w-5/12 focus:outline-none focus:border-blue-300 dark:focus:border-blue-700 transition-colors max-h-[52rem]"
         placeholder="Want to be Ai ready?? Let's find the perfect AI plugin..."
         aria-label="Text"
