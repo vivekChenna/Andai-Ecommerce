@@ -4,6 +4,8 @@ import { useQuery } from "@apollo/client";
 import { GridTileImage } from "./tile";
 import Link from "next/link";
 import { GET_HOME_PAGE_PLUGINS } from "@/lib/queries";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 function ThreeItemGridItem({ item, size, priority }) {
   return (
@@ -53,19 +55,20 @@ export function ThreeItemGrid() {
     return (
       <section className="mx-auto grid max-w-screen-2xl gap-4 px-4 pb-4 md:grid-cols-6 md:grid-rows-2">
         {/* 1st */}
-        <div className="md:col-span-4 md:row-span-2 rounded-lg border hover:border-blue-600 border-black/20">
-          <div className="relative block aspect-square h-full w-full animate-pulse bg-gray-400/30"/>
+
+        <div className="md:col-span-4 md:row-span-2 rounded-lg">
+          <Skeleton className="relative block aspect-square h-full w-full" />
         </div>
 
         {/* 2nd */}
 
-        <div className="md:col-span-2 md:row-span-1 rounded-lg border hover:border-blue-600 border-black/20">
-          <div className="relative block aspect-square h-full w-full animate-pulse bg-gray-400/30"/>
+        <div className="md:col-span-2 md:row-span-1 rounded-lg">
+        <Skeleton className="relative block aspect-square h-full w-full" />
         </div>
 
         {/* 3rd */}
-        <div className="md:col-span-2 md:row-span-1 rounded-lg border hover:border-blue-600 border-black/20">
-          <di className="relative block aspect-square h-full w-full animate-pulse bg-gray-400/30"/>
+        <div className="md:col-span-2 md:row-span-1 rounded-lg">
+        <Skeleton className="relative block aspect-square h-full w-full" />
         </div>
       </section>
     );
