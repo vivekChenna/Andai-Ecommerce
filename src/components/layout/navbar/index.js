@@ -87,8 +87,17 @@ export default function Navbar({ isAuthenticated, user }) {
         </div> */}
       </div>
       <div className=" flex flex-row items-center">
+      
+        <Link
+          href={`https://share.hsforms.com/1xnAsoonbSDKLmfRgEq9XQwrplpw`}
+          target="_blank"
+        >
+          <button className=" bg-indigo-500 py-1.5 px-2 hover:bg-indigo-600 transition-all ease-in-out duration-200 rounded-md text-white text-sm font-medium mr-3">
+            SUBSCRIBE
+          </button>
+        </Link>
         {isAuthenticated ? (
-          <LogoutLink className=" md:block hidden min-w-max mr-3 bg-gray-200 rounded-md px-2 py-1">
+          <LogoutLink className=" md:block hidden min-w-max bg-gray-200 rounded-md px-2 py-1 dark:bg-gray-500">
             Log out
           </LogoutLink>
         ) : (
@@ -101,14 +110,6 @@ export default function Navbar({ isAuthenticated, user }) {
             </div>
           </div>
         )}
-        <Link
-          href={`https://share.hsforms.com/1xnAsoonbSDKLmfRgEq9XQwrplpw`}
-          target="_blank"
-        >
-          <button className=" bg-indigo-500 py-1.5 px-2 hover:bg-indigo-600 transition-all ease-in-out duration-200 rounded-md text-white text-sm font-medium">
-            SUBSCRIBE
-          </button>
-        </Link>
       </div>
     </nav>
   );
