@@ -47,11 +47,29 @@ export function ThreeItemGrid() {
     },
   });
 
-  if (loading) {
-    return <div className=" w-full text-center">Loading...</div>;
-  }
-
   const homePagePlugins = data?.plugins || [];
+
+  if (loading) {
+    return (
+      <section className="mx-auto grid max-w-screen-2xl gap-4 px-4 pb-4 md:grid-cols-6 md:grid-rows-2">
+        {/* 1st */}
+        <div className="md:col-span-4 md:row-span-2 rounded-lg border hover:border-blue-600 border-black/20">
+          <div className="relative block aspect-square h-full w-full animate-pulse bg-gray-400/30"/>
+        </div>
+
+        {/* 2nd */}
+
+        <div className="md:col-span-2 md:row-span-1 rounded-lg border hover:border-blue-600 border-black/20">
+          <div className="relative block aspect-square h-full w-full animate-pulse bg-gray-400/30"/>
+        </div>
+
+        {/* 3rd */}
+        <div className="md:col-span-2 md:row-span-1 rounded-lg border hover:border-blue-600 border-black/20">
+          <di className="relative block aspect-square h-full w-full animate-pulse bg-gray-400/30"/>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="mx-auto grid max-w-screen-2xl gap-4 px-4 pb-4 md:grid-cols-6 md:grid-rows-2">
