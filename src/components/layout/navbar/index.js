@@ -24,14 +24,14 @@ export default function Navbar({ isAuthenticated, user }) {
       title: "All",
       path: "/search",
     },
-    {
-      title: "Inhouse",
-      path: "/search/inhouse",
-    },
-    {
-      title: "Vendor",
-      path: "/search/vendor",
-    },
+    // {
+    //   title: "Inhouse",
+    //   path: "/search/inhouse",
+    // },
+    // {
+    //   title: "Vendor",
+    //   path: "/search/vendor",
+    // },
     {
       title: "Talk to AI",
       path: "/completion",
@@ -54,9 +54,9 @@ export default function Navbar({ isAuthenticated, user }) {
             {/* <LogoSquare /> */}
             <img
               src="https://andai.co.in/images/logo.png"
-              className="w-10 h-10"
+              className="w-12 h-12  rounded-md"
             />
-            <div className="ml-2 flex-none text-sm font-medium uppercase md:hidden lg:block">
+            <div className="ml-2 flex-none text-sm font-medium uppercase md:hidden lg:block text-black">
               {"And Ai"}
             </div>
           </Link>
@@ -64,12 +64,12 @@ export default function Navbar({ isAuthenticated, user }) {
             <ul className="hidden gap-6 text-sm md:flex md:items-center">
               {menu.map((item) => (
                 <li key={item.title}>
-                  <Link
-                    href={item.path}
-                    className="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
-                  >
-                    {item.title}
-                  </Link>
+                <Link
+  href={item.path}
+  className="relative text-black font-medium underline-offset-4 hover:underline px-2 py-1 rounded transition-all duration-300 ease-in-out"
+>
+  {item.title}
+</Link>
                 </li>
               ))}
             </ul>

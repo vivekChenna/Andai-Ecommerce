@@ -42,7 +42,7 @@ export default function CategoryPage({ params, searchParams }) {
   });
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className=" text-black ">Loading...</div>;
   }
 
   const plugins = data?.plugins || [];

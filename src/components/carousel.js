@@ -22,7 +22,7 @@ export function Carousel() {
   });
 
   if (loading) {
-    return <div className=" w-full text-center my-10">Loading...</div>;
+    return <div className=" w-full text-center my-10 text-black">Loading...</div>;
   }
 
   if (carouselPlugins?.plugins?.length === 0) return null;

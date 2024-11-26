@@ -52,13 +52,13 @@ export default function ProductPage({ params }) {
   });
 
   if (loading) {
-    return <div className=" w-full text-center">Loading...</div>;
+    return <div className=" w-full text-center text-black">Loading...</div>;
   }
 
   return (
     <>
-      <div className="mx-auto max-w-screen-2xl px-4">
-        <div className="flex flex-col rounded-lg border border-neutral-200 bg-white p-8 md:p-12 lg:flex-row lg:gap-8 dark:border-neutral-800 dark:bg-black">
+      <div className="mx-auto max-w-screen-2xl px-4 text-black dark:bg-[#FFF8E3]">
+        <div className="flex flex-col rounded-lg border shadow-xl border-neutral-300 p-8 md:p-12 lg:flex-row lg:gap-8 bg-[#FFF8E3]">
           <div className="h-full w-full basis-full lg:basis-4/6">
             <Suspense
               fallback={
@@ -100,7 +100,7 @@ function RelatedProducts({ id, filterId }) {
   });
 
   if (loading) {
-    return <div className=" w-full text-center">Loading...</div>;
+    return <div className=" w-full text-center text-black">Loading...</div>;
   }
 
   return plugins?.length > 0 ? (

@@ -2,11 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
+} */
+
+body {
+  color: #000000;
+  background: #FFF8E3; /* A cream-like color */
 }
+
+/* :root {
+  background: #0b0b0c;
+  font-size: 16px;
+  color-scheme: dark;
+} */
+
 
 
 @supports (font: -apple-system-body) and (-webkit-appearance: none) {

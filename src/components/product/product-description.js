@@ -9,7 +9,7 @@ import Link from "next/link";
 export function ProductDescription({ product }) {
   return (
     <>
-      <div className="mb-6 flex flex-col border-b pb-6 dark:border-neutral-700">
+      <div className="mb-6 flex flex-col border-b pb-6 dark:border-neutral-700 text-black">
         <h1 className="mb-2 md:text-4xl text-xl font-medium">
           {product?.title}
         </h1>

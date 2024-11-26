@@ -29,7 +29,7 @@ export default function SuggestionPage() {
 
   return (
     <form
-      className="flex flex-col items-center md:mt-32 mt-10 min-w-full grow pt-10 md:pt-0 lg:pt-0 md:px-0 px-3 mb-10"
+      className="flex flex-col items-center md:mt-32 mt-10 min-w-full grow pt-10 md:pt-0 lg:pt-0 md:px-0 px-3 mb-10 "
       onSubmit={(e) => {
         handleSubmit(e);
         setInput("");

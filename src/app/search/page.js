@@ -37,7 +37,7 @@ export default function SearchPage({ searchParams }) {
   return (
     <>
       {searchValue ? (
-        <p className="mb-4">
+        <p className="mb-4 text-black">
           {plugins.length === 0
             ? "There are no plugins that match "
             : `Showing ${plugins.length} ${resultsText} for `}

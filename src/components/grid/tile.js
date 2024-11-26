@@ -1,5 +1,6 @@
 import clsx from "clsx";
-import Image from "next/image";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 import Label from "../label";
 
 export function GridTileImage({
@@ -20,21 +21,20 @@ export function GridTileImage({
       )}
     >
       {props.src ? (
-        // eslint-disable-next-line jsx-a11y/alt-text -- `alt` is inherited from `props`
-        // <Image
-        //   className={clsx("relative h-full w-full object-contain", {
-        //     "transition duration-300 ease-in-out group-hover:scale-105":
-        //       isInteractive,
-        //   })}
-        //   {...props}
-        // />
-        <img
-          className={clsx("relative h-full w-full object-contain", {
-            "transition duration-300 ease-in-out group-hover:scale-105":
+        <div
+          className={clsx("relative h-full w-full overflow-hidden", {
+            "transition-transform duration-500 ease-in-out group-hover:scale-105":
               isInteractive,
           })}
-          {...props}
-        />
+        >
+          <LazyLoadImage
+            className="h-full w-full object-contain"
+            effect="blur"
+            placeholderSrc={props?.src}
+            wrapperClassName="w-full h-full" 
+            {...props}
+          />
+        </div>
       ) : null}
       {label ? (
         <Label
