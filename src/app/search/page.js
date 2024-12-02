@@ -28,7 +28,7 @@ export default function SearchPage({ searchParams }) {
   });
 
   if (loading) {
-    return <div>Loading..</div>;
+    return <div className=" text-black">Loading..</div>;
   }
 
   const resultsText = AllPlugins?.plugins?.length > 1 ? "results" : "result";
