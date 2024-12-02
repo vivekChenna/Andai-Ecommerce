@@ -57,18 +57,19 @@ export function ThreeItemGrid() {
         {/* 1st */}
 
         <div className="md:col-span-4 md:row-span-2 rounded-lg">
-          <Skeleton className="relative block aspect-square h-full w-full" />
+        <Skeleton baseColor="#E8D9C1" highlightColor="#EAE0C8"  className="relative block aspect-square h-full w-full" />
+
         </div>
 
         {/* 2nd */}
 
         <div className="md:col-span-2 md:row-span-1 rounded-lg">
-        <Skeleton className="relative block aspect-square h-full w-full" />
+        <Skeleton baseColor="#E8D9C1" highlightColor="#EAE0C8 "   className="relative block aspect-square h-full w-full" />
         </div>
 
         {/* 3rd */}
         <div className="md:col-span-2 md:row-span-1 rounded-lg">
-        <Skeleton className="relative block aspect-square h-full w-full" />
+        <Skeleton baseColor="#E8D9C1" highlightColor="#EAE0C8  "  className="relative block aspect-square h-full w-full" />
         </div>
       </section>
     );

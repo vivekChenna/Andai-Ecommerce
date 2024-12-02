@@ -51,13 +51,10 @@ export default function ProductPage({ params }) {
     },
   });
 
-  if (loading) {
-    return <div className=" w-full text-center text-black">Loading...</div>;
-  }
 
   return (
     <>
-      <div className="mx-auto max-w-screen-2xl px-4 text-black dark:bg-[#FFF8E3]">
+      <div className="mx-auto max-w-screen-2xl px-4 text-black  bg-[#FFF8E3]">
         <div className="flex flex-col rounded-lg border shadow-xl border-neutral-300 p-8 md:p-12 lg:flex-row lg:gap-8 bg-[#FFF8E3]">
           <div className="h-full w-full basis-full lg:basis-4/6">
             <Suspense
@@ -65,14 +62,15 @@ export default function ProductPage({ params }) {
                 <div className="relative aspect-square h-full max-h-[550px] w-full overflow-hidden" />
               }
             >
-              <Gallery
-                image={data?.plugins[0]?.img_url || `/svg/product.svg`}
-              />
+             <Gallery
+              image={data?.plugins[0]?.img_url || `/svg/product.svg`}
+              isLoading={loading}
+            />
             </Suspense>
           </div>
 
           <div className="basis-full lg:basis-2/6">
-            <ProductDescription product={data?.plugins[0]} />
+            <ProductDescription product={data?.plugins[0]} isLoading={loading} />
           </div>
         </div>
         <RelatedProducts
