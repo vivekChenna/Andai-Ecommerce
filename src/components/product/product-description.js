@@ -11,14 +11,28 @@ import "react-loading-skeleton/dist/skeleton.css";
 export function ProductDescription({ product, isLoading }) {
   return (
     <>
-      <div className="mb-6 flex flex-col border-b pb-6 dark:border-neutral-700 text-black">
+      <div className="mb-6 flex flex-col  text-black">
         <h1 className="mb-2 md:text-4xl text-xl font-medium">
-          {isLoading ? <Skeleton baseColor="#E8D9C1" highlightColor="#EAE0C8" width={320} /> : product?.title}
+          {isLoading ? (
+            <Skeleton
+              baseColor="#E8D9C1"
+              highlightColor="#EAE0C8"
+              width={320}
+            />
+          ) : (
+            product?.title
+          )}
         </h1>
         <div className=" flex items-center justify-between">
           <div className="mr-auto ">
             {isLoading ? (
-              <Skeleton baseColor="#E8D9C1" highlightColor="#EAE0C8" circle width={50} height={50} />
+              <Skeleton
+                baseColor="#E8D9C1"
+                highlightColor="#EAE0C8"
+                circle
+                width={50}
+                height={50}
+              />
             ) : (
               <div className="w-auto rounded-full bg-blue-600 p-2 text-sm text-white">
                 <Link
@@ -34,24 +48,36 @@ export function ProductDescription({ product, isLoading }) {
               </div>
             )}
           </div>
-          {
-            <div className=" mr-auto">
-              {isLoading ? (
-                <Skeleton baseColor="#E8D9C1" highlightColor="#EAE0C8" circle={true} width={50} height={50} />
-              ) : (
-                <a
-                  className=" w-auto rounded-full bg-blue-600 p-2 text-sm text-white"
-                  href={product?.docs_url}
-                  target="_blank"
-                >
-                  DOCS
-                </a>
-              )}
-            </div>
-          }
+
+          <div className=" mr-auto">
+            {isLoading ? (
+              <Skeleton
+                baseColor="#E8D9C1"
+                highlightColor="#EAE0C8"
+                circle={true}
+                width={50}
+                height={50}
+              />
+            ) : (
+              <a
+                className=" w-auto rounded-full bg-blue-600 p-2 text-sm text-white"
+                href={product?.docs_url}
+                target="_blank"
+              >
+                DOCS
+              </a>
+            )}
+          </div>
+
           <div className="mr-auto">
             {isLoading ? (
-              <Skeleton baseColor="#E8D9C1" highlightColor="#EAE0C8" circle height={50} width={50} />
+              <Skeleton
+                baseColor="#E8D9C1"
+                highlightColor="#EAE0C8"
+                circle
+                height={50}
+                width={50}
+              />
             ) : (
               <div className=" w-auto rounded-full bg-blue-600 p-2 text-sm text-white">
                 <a href={product?.Web_url} target="_blank">
@@ -62,8 +88,24 @@ export function ProductDescription({ product, isLoading }) {
           </div>
         </div>
       </div>
-      <div className=" font-medium">
-        {isLoading ? <Skeleton baseColor="#E8D9C1" highlightColor="#EAE0C8" height={30} count={5} /> : product?.description}
+
+      {isLoading ? (
+        <Skeleton baseColor="#E8D9C1" highlightColor="#EAE0C8" />
+      ) : (
+        <div className="border border-neutral-600" />
+      )}
+
+      <div className=" font-medium mt-2">
+        {isLoading ? (
+          <Skeleton
+            baseColor="#E8D9C1"
+            highlightColor="#EAE0C8"
+            height={30}
+            count={5}
+          />
+        ) : (
+          product?.description
+        )}
       </div>
       {/* <Suspense fallback={null}>
         <VariantSelector options={product.options} variants={product.variants} />

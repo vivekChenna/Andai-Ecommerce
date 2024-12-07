@@ -8,12 +8,22 @@ import { useQuery } from "@apollo/client";
 // import { getProducts } from 'lib/shopify';
 
 export default function SearchPage({ searchParams }) {
-  const { sort, q: searchValue } = searchParams;
+  const { sort, q: searchValue, data: pluginsText } = searchParams;
   // const { sortKey, reverse } = sorting.find((item) => item.slug === sort) || defaultSort;
 
   // const products = await getProducts({ sortKey, reverse, query: searchValue });
 
+  console.log("pluginsText", pluginsText);
 
+  const pluginsList = pluginsText
+    ?.split("\n") // Split by line breaks
+    ?.map((plugin) => plugin.replace("-" || "•", "").trim()) // Remove dashes and extra spaces
+    ?.filter((plugin) => plugin); // Remove empty values (if any)
+
+  // Log the result
+  console.log("my plugins array:", pluginsList);
+
+  // console.log("searchPlugins", searchPlugins);
 
   const {
     data: AllPlugins,
@@ -22,7 +32,8 @@ export default function SearchPage({ searchParams }) {
   } = useQuery(GET_ALL_PLUGINS, {
     variables: {
       where: {
-        ...(searchValue ? { title: { _ilike: `%${searchValue}%` } } : {}),
+        // ...(searchValue ? { title: { _ilike: `%${searchValue}%` } } : {}),
+        title: { _in: pluginsList },
       },
     },
   });
