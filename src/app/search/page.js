@@ -38,9 +38,7 @@ export default function SearchPage({ searchParams }) {
     },
   });
 
-  if (loading) {
-    return <div className=" text-black">Loading..</div>;
-  }
+
 
   const resultsText = AllPlugins?.plugins?.length > 1 ? "results" : "result";
   const plugins = AllPlugins?.plugins || [];
@@ -55,11 +53,11 @@ export default function SearchPage({ searchParams }) {
           <span className="font-bold">&quot;{searchValue}&quot;</span>
         </p>
       ) : null}
-      {plugins.length > 0 ? (
+      {
         <Grid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          <ProductGridItems products={plugins} />
+          <ProductGridItems products={plugins} isLoading={loading} />
         </Grid>
-      ) : null}
+      }
     </>
   );
 }
