@@ -1,5 +1,6 @@
 "use client";
 
+import { usePlugins } from "@/context/pluginsContext";
 import { createUrl } from "@/lib/utils";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 // import { createUrl } from 'lib/utils';
@@ -9,34 +10,39 @@ export default function Search() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
+  const { setPluginsText } = usePlugins();
+
   async function onSubmit(e) {
     e.preventDefault();
     const val = e.target;
     const search = val.search;
 
-    const response = await fetch("https://sigma.andaihub.com/v1/workflows/run", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer app-cms2cAAeQic9tAemM6gI5efa",
-      },
-
-      body: JSON.stringify({
-        inputs: {
-          user_query: search?.value,
+    const response = await fetch(
+      "https://sigma.andaihub.com/v1/workflows/run",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer app-cms2cAAeQic9tAemM6gI5efa",
         },
-        user: "abc-123",
-      }),
-    });
+
+        body: JSON.stringify({
+          inputs: {
+            user_query: search?.value,
+          },
+          user: "abc-123",
+        }),
+      }
+    );
 
     const jsonData = await response.json();
-    // console.log("jsonData", jsonData?.data?.outputs?.text);
+    setPluginsText(jsonData?.data?.outputs?.text);
 
     const newParams = new URLSearchParams(searchParams.toString());
 
     if (search.value) {
       newParams.set("q", search.value);
-      newParams.set("data", jsonData?.data?.outputs?.text);
+      // newParams.set("data", jsonData?.data?.outputs?.text);
     } else {
       newParams.delete("q");
     }

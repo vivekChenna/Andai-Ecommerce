@@ -2,18 +2,21 @@
 
 import Grid from "@/components/grid";
 import ProductGridItems from "@/components/layout/product-grid-items";
+import { usePlugins } from "@/context/pluginsContext";
 import { GET_ALL_PLUGINS } from "@/lib/queries";
 import { useQuery } from "@apollo/client";
 // import { defaultSort, sorting } from 'lib/constants';
 // import { getProducts } from 'lib/shopify';
 
 export default function SearchPage({ searchParams }) {
-  const { sort, q: searchValue, data: pluginsText } = searchParams;
+  const { sort, q: searchValue } = searchParams;
   // const { sortKey, reverse } = sorting.find((item) => item.slug === sort) || defaultSort;
 
   // const products = await getProducts({ sortKey, reverse, query: searchValue });
 
-  console.log("pluginsText", pluginsText);
+  const { pluginsText } = usePlugins();
+
+  console.log("pluginsText from context", pluginsText);
 
   const pluginsList = pluginsText
     ?.split("\n") // Split by line breaks
@@ -33,7 +36,7 @@ export default function SearchPage({ searchParams }) {
     variables: {
       where: {
         // ...(searchValue ? { title: { _ilike: `%${searchValue}%` } } : {}),
-        title: { _in: pluginsList },
+        ...(searchValue ? { title: { _in: pluginsList } } : {}),
       },
     },
   });
