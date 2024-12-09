@@ -14,7 +14,7 @@ export default function Search() {
     const val = e.target;
     const search = val.search;
 
-    const response = await fetch("http://sigma.andaihub.com/v1/workflows/run", {
+    const response = await fetch("https://sigma.andaihub.com/v1/workflows/run", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
