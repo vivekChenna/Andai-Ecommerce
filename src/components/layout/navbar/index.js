@@ -97,7 +97,7 @@ export default function Navbar({ isAuthenticated, user }) {
           </button>
         </Link>
         {isAuthenticated ? (
-          <LogoutLink className=" md:block hidden min-w-max bg-gray-200 rounded-md px-2 py-1 dark:bg-gray-500">
+          <LogoutLink className=" md:block hidden min-w-max rounded-md px-2 py-1 bg-black/90">
             Log out
           </LogoutLink>
         ) : (

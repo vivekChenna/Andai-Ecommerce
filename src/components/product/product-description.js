@@ -34,7 +34,7 @@ export function ProductDescription({ product, isLoading }) {
                 height={50}
               />
             ) : (
-              <div className="w-auto rounded-full bg-blue-600 p-2 text-sm text-white">
+              <div className="w-auto rounded-full bg-[#FFB07C] p-2 text-sm text-white  font-medium">
                 <Link
                   href={`https://docs.google.com/forms/d/e/1FAIpQLScfOhn111VpB2DB09HYpOSqyh3VKNMHORXyMugR2mndNsNRvw/viewform`}
                   target="_blank"
@@ -60,7 +60,7 @@ export function ProductDescription({ product, isLoading }) {
               />
             ) : (
               <a
-                className=" w-auto rounded-full bg-blue-600 p-2 text-sm text-white"
+                className=" w-auto rounded-full bg-[#FFB07C] p-2 text-sm text-white font-medium"
                 href={product?.docs_url}
                 target="_blank"
               >
@@ -79,7 +79,7 @@ export function ProductDescription({ product, isLoading }) {
                 width={50}
               />
             ) : (
-              <div className=" w-auto rounded-full bg-blue-600 p-2 text-sm text-white">
+              <div className=" w-auto rounded-full bg-[#FFB07C] p-2 text-sm text-white font-medium">
                 <a href={product?.Web_url} target="_blank">
                   DEMO
                 </a>
