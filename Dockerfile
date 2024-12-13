@@ -1,21 +1,20 @@
-FROM node:18-alpine AS builder
+# Use an official Node.js runtime as a parent image
+FROM node:18-alpine
+
+# Set the working directory
 WORKDIR /app
 
 COPY package*.json ./
 
+# Install dependencies
 RUN npm install
 
+# Copy the rest of the application code
 COPY . .
 
-RUN npm run build
+# Expose the application port (change the port if necessary)
+EXPOSE 9015
 
 
-FROM node:18-alpine AS runner
-WORKDIR /app
-
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./
-
-CMD [ "npm", "run","dev" ]
+# Command to run the application
+CMD ["npm", "run", "dev", "--", "--port", "9015"]
