@@ -21,7 +21,7 @@ export default function Navbar({ isAuthenticated, user }) {
 
   const menu = [
     {
-      title: "All",
+      title: "All Plugins",
       path: "/search",
     },
     // {
