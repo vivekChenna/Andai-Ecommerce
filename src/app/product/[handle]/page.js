@@ -55,7 +55,7 @@ export default function ProductPage({ params }) {
   return (
     <>
       <div className="mx-auto max-w-screen-2xl px-4 text-black  bg-[#FFF8E3]">
-        <div className="flex flex-col rounded-lg border shadow-xl border-neutral-300 p-8 md:p-12 lg:flex-row lg:gap-8 bg-[#FFF8E3]">
+        <div className="flex flex-col rounded-lg border  border-neutral-300 p-8 md:p-12 lg:flex-row lg:gap-8 bg-[#FFF8E3]">
           <div className="h-full w-full basis-full lg:basis-4/6">
             <Suspense
               fallback={
@@ -80,7 +80,7 @@ export default function ProductPage({ params }) {
           id={data?.plugins[0]?.category_id}
           filterId={data?.plugins[0]?.id}
         /> */}
-        <div className="mt-4">
+        <div className=" mt-[18px]">
           <Carousel />
         </div>
       </div>
