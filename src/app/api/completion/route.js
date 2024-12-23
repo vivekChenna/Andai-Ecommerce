@@ -43,7 +43,7 @@ export async function POST(req) {
   //     return new Response("Internal Server Error", { status: 500 });
   //   }
 
-  console.log("my body", mybody);
+  // console.log("my body", mybody);
 
   const { myText, prompt } = mybody;
   if (!prompt) return new Response("Prompt is required", { status: 400 });

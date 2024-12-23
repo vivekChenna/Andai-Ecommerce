@@ -16,7 +16,7 @@ export function ProfileAvatar({ name, imageUrl }) {
 
   const initial = name.charAt(0).toUpperCase()
 
-  console.log('initial ' , initial);
+  // console.log('initial ' , initial);
   
 
   return (

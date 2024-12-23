@@ -61,7 +61,7 @@ export default function Navbar({ isAuthenticated, user }) {
     },
   ];
 
-  console.log("user", user);
+  // console.log("user", user);
 
 
 

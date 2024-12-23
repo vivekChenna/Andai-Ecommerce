@@ -19,7 +19,7 @@ export default function SuggestionPage() {
   } = useCompletion({
     body: { myText },
     onFinish: (prompt, completion) => {
-      console.log("on finish called");
+      // console.log("on finish called");
       setMyText(completion.trim());
     },
     onError: (error) => toast.error(error.message),

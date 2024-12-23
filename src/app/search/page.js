@@ -16,7 +16,7 @@ export default function SearchPage({ searchParams }) {
 
   const { pluginsText } = usePlugins();
 
-  console.log("pluginsText from context", pluginsText);
+  // console.log("pluginsText from context", pluginsText);
 
   const pluginsList = pluginsText
     ?.split("\n") // Split by line breaks
@@ -24,7 +24,7 @@ export default function SearchPage({ searchParams }) {
     ?.filter((plugin) => plugin); // Remove empty values (if any)
 
   // Log the result
-  console.log("my plugins array:", pluginsList);
+  // console.log("my plugins array:", pluginsList);
 
   // console.log("searchPlugins", searchPlugins);
 
