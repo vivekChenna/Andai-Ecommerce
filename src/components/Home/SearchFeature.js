@@ -1,8 +1,7 @@
-"use client"
+"use client";
 
 import Search from "../layout/navbar/search";
 export default function SearchFeature() {
-
   return (
     <section className="py-20 px-4 md:px-6 lg:px-8 bg-white">
       <div className="container mx-auto">
@@ -10,9 +9,10 @@ export default function SearchFeature() {
           Find the Perfect AI Plugin
         </h2>
         <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
-          Our intelligent search understands natural language. Simply describe
-          what you&pos;re looking for, and we&pos;ll find the right AI plugin for you.
-        </p>
+  Our intelligent search understands natural language. Simply describe
+  what you&apos;re looking for, and we&apos;ll find the right AI plugin for you.
+</p>
+
         {/* <div className="max-w-2xl mx-auto">
           <form onSubmit={handleSearch} className="flex gap-2 mb-6">
             <Input
@@ -38,8 +38,10 @@ export default function SearchFeature() {
           )}
         </div> */}
         <div className="max-w-2xl mx-auto">
-
-        <Search placeholder={`E.g., 'I need a chatbot for customer support'`} py="py-3"/>
+          <Search
+            placeholder={`E.g., 'I need a chatbot for customer support'`}
+            py="py-3"
+          />
         </div>
       </div>
     </section>
