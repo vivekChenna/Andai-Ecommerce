@@ -122,7 +122,7 @@ export default function Navbar({ isAuthenticated, user }) {
           href={`https://share.hsforms.com/1xnAsoonbSDKLmfRgEq9XQwrplpw`}
           target="_blank"
         >
-          <button className=" bg-black py-1.5 px-4 hover:bg-indigo-600 transition-all ease-in-out duration-200 rounded-md text-white text-sm font-medium mr-3">
+          <button className=" bg-black py-1.5 px-4 hover:bg-black/80 transition-all ease-in-out duration-200 rounded-md text-white text-sm font-medium mr-3">
             SUBSCRIBE
           </button>
         </Link>
