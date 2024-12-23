@@ -6,7 +6,7 @@ import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 // import { createUrl } from 'lib/utils';
 import { useRouter, useSearchParams } from "next/navigation";
 
-export default function Search() {
+export default function Search({placeholder , py}) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -59,10 +59,10 @@ export default function Search() {
         key={searchParams?.get("q")}
         type="text"
         name="search"
-        placeholder="Search for plugins..."
+        placeholder={placeholder ? placeholder : "Search for plugins..."}
         autoComplete="off"
         defaultValue={searchParams?.get("q") || ""}
-        className="w-full rounded-lg border bg-white px-4 py-2 text-sm text-neutral-800 placeholder:text-neutral-500 shadow-md dark:border-neutral-700 dark:bg-neutral-900 dark:text-white dark:placeholder:text-neutral-400 transition-all duration-200  focus:outline-none hover:shadow-lg"
+        className={`w-full rounded-lg border bg-white px-4 ${py ? py : "py-2"} text-sm text-neutral-800 placeholder:text-neutral-500 shadow-md dark:border-neutral-700 dark:bg-neutral-900 dark:text-white dark:placeholder:text-neutral-400 transition-all duration-200  focus:outline-none hover:shadow-lg`}
       />
 
       <div className="absolute right-0 top-0 mr-3 flex h-full items-center">

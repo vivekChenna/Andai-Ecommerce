@@ -15,10 +15,12 @@ import {
   LogoutLink,
 } from "@kinde-oss/kinde-auth-nextjs/components";
 import { ProfileAvatar } from "@/components/profile-avatar";
+import { usePathname } from "next/navigation";
 // const { SITE_NAME } = process.env;
 
 export default function Navbar({ isAuthenticated, user }) {
   //   const menu = await getMenu('next-js-frontend-header-menu');
+  const pathname = usePathname();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -37,9 +39,11 @@ export default function Navbar({ isAuthenticated, user }) {
     }
   };
 
+  console.log("pathname", pathname);
+
   const menu = [
     {
-      title: "Latest",
+      title: "Latest Plugins",
       path: "/latest",
     },
     {
@@ -63,8 +67,6 @@ export default function Navbar({ isAuthenticated, user }) {
 
   // console.log("user", user);
 
-
-
   return (
     <nav className="relative flex items-center justify-between p-4 lg:px-6">
       <div className="block flex-none md:hidden">
@@ -83,9 +85,9 @@ export default function Navbar({ isAuthenticated, user }) {
               src="https://andai.co.in/images/logo.png"
               className="w-12 h-12  rounded-md"
             />
-            <div className="ml-2 flex-none text-sm font-medium  md:hidden lg:block text-black">
+            {/* <div className="ml-2 flex-none text-[17px] font-medium  md:hidden lg:block text-black">
               {"Andai"}
-            </div>
+            </div> */}
           </Link>
           {menu.length ? (
             <ul className="hidden gap-6 text-sm md:flex md:items-center">
@@ -93,7 +95,7 @@ export default function Navbar({ isAuthenticated, user }) {
                 <li key={item.title}>
                   <Link
                     href={item.path}
-                    className="relative text-black font-medium underline-offset-4 hover:underline px-2 py-1 rounded transition-all duration-300 ease-in-out"
+                    className="relative font-medium text-[16px] underline-offset-4 px-2 py-1 rounded transition-all duration-300 ease-in-out text-gray-600 hover:text-gray-800"
                   >
                     {item.title}
                   </Link>
@@ -102,11 +104,13 @@ export default function Navbar({ isAuthenticated, user }) {
             </ul>
           ) : null}
         </div>
-        <div className="hidden justify-center md:flex md:w-1/3">
-          <Suspense fallback={<SearchSkeleton />}>
-            <Search />
-          </Suspense>
-        </div>
+        {pathname !== "/" && (
+          <div className="hidden justify-center md:flex md:w-1/3">
+            <Suspense fallback={<SearchSkeleton />}>
+              <Search />
+            </Suspense>
+          </div>
+        )}
         {/* <div className="flex justify-end md:w-1/3">
           <Suspense fallback={<OpenCart />}>
             <Cart />
@@ -125,19 +129,19 @@ export default function Navbar({ isAuthenticated, user }) {
         {isAuthenticated ? (
           <div
             className="relative  lg:block hidden "
-         ref={dropdownRef}
-         onClick={() => setIsDropdownOpen((prev) => !prev)}
+            ref={dropdownRef}
+            onClick={() => setIsDropdownOpen((prev) => !prev)}
           >
             <button variant="ghost" size="icon" className="rounded-full">
               <ProfileAvatar name={user?.given_name} imageUrl={user?.picture} />
             </button>
             {isDropdownOpen && (
-    <div className="absolute right-0 mt-2 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 z-50 border">
-      <LogoutLink className="md:block hidden min-w-max rounded-md text-black text-center px-4 py-1">
-        Log out
-      </LogoutLink>
-    </div>
-  )}
+              <div className="absolute right-0 mt-2 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 z-50 border">
+                <LogoutLink className="md:block hidden min-w-max rounded-md text-black text-center px-4 py-1">
+                  Log out
+                </LogoutLink>
+              </div>
+            )}
           </div>
         ) : (
           <div className=" md:flex items-center hidden">
