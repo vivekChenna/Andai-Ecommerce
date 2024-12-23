@@ -9,7 +9,7 @@ export default function SearchFeature() {
         </h2>
         <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
           Our intelligent search understands natural language. Simply describe
-          what you're looking for, and we'll find the right AI plugin for you.
+          what you&pos;re looking for, and we&pos;ll find the right AI plugin for you.
         </p>
         {/* <div className="max-w-2xl mx-auto">
           <form onSubmit={handleSearch} className="flex gap-2 mb-6">

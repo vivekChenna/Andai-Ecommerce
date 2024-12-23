@@ -21,9 +21,9 @@ export default function Marketplace() {
             </h3>
             <p className="text-gray-600 mb-6">
               Our AI Marketplace offers a curated selection of the best AI
-              plugins for various use cases. Whether you're looking to enhance
+              plugins for various use cases. Whether you&apos;re looking to enhance
               your customer service, optimize your operations, or gain deeper
-              insights from your data, we've got you covered.
+              insights from your data, we&apos;ve got you covered.
             </p>
             <ul className="space-y-2 text-black">
               <li className="flex items-center">
