@@ -1,3 +1,5 @@
+"use client"
+
 import Search from "../layout/navbar/search";
 export default function SearchFeature() {
 
