@@ -74,7 +74,7 @@ export default function Footer() {
         <div className="md:ml-auto">
         <Link href={`https://share.hsforms.com/1xnAsoonbSDKLmfRgEq9XQwrplpw`} target="_blank" >
         <button
-          className=" bg-indigo-500 py-1.5 px-2 hover:bg-indigo-600 transition-all ease-in-out duration-200 rounded-md text-white text-sm font-medium"
+          className=" bg-black py-1.5 px-4 hover:bg-indigo-600 transition-all ease-in-out duration-200 rounded-md text-white text-sm font-medium"
         >
           SUBSCRIBE
         </button>
