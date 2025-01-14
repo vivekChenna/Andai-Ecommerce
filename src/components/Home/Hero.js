@@ -18,14 +18,14 @@ export default function Hero() {
         <div className="flex justify-center space-x-4">
           <button
             size="lg"
-            className="bg-black text-white py-2 px-5 rounded-md font-medium transition-colors ease-in-out duration-300 hover:bg-black/80"
+            className="bg-black text-white  py-[9px] active:scale-75 px-6 rounded-md font-medium transition-all text-lg ease-in-out duration-300 hover:bg-black/80"
             onClick={() => {
               router.push("/latest");
             }}
           >
             Explore AI Plugins
           </button>
-          <button
+          {/* <button
             size="lg"
             className=" bg-white border-2 border-gray-200 rounded-md text-black py-2 px-5 font-medium hover:bg-gray-100 transition-colors ease-in-out duration-300"
             onClick={() => {
@@ -33,7 +33,7 @@ export default function Hero() {
             }}
           >
             Visit AI Marketplace
-          </button>
+          </button> */}
         </div>
       </div>
     </section>
