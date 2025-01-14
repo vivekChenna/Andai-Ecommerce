@@ -39,7 +39,7 @@ export default function Navbar({ isAuthenticated, user }) {
     }
   };
 
-  console.log("pathname", pathname);
+  // console.log("pathname", pathname);
 
   const menu = [
     {
