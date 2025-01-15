@@ -2,19 +2,17 @@
 
 import { Carousel } from "@/components/carousel";
 import { GridTileImage } from "@/components/grid/tile";
-// import type { Metadata } from 'next';
-// import { notFound } from 'next/navigation';
 
 // import { GridTileImage } from "@/components/grid/tile";
 import Footer from "@/components/layout/footer";
 import { Gallery } from "@/components/product/gallery";
-// import { Gallery } from 'components/product/gallery';
 import { ProductDescription } from "@/components/product/product-description";
 import {
   GET_FILTERED_PLUGINS,
   GET_SINGLE_PLUGIN_INFORMATION,
 } from "@/lib/queries";
 import { useQuery } from "@apollo/client";
+import { useTheme } from "next-themes";
 import Link from "next/link";
 // import { HIDDEN_PRODUCT_TAG } from 'lib/constants';
 // import { getProduct, getProductRecommendations } from 'lib/shopify';
@@ -23,6 +21,28 @@ import Link from "next/link";
 import { Suspense } from "react";
 
 export default function ProductPage({ params }) {
+
+  const {theme}= useTheme();
+  const getSkeletonColors = (theme) => {
+    switch (theme) {
+      case "dark":
+        return {
+          baseColor: "hsl(217.2 32.6% 17.5%)", // Using your dark theme muted color
+          highlightColor: "hsl(222.2 84% 4.9%)", // Using your dark theme background color
+        };
+      case "andai":
+        return {
+          baseColor: "#E8D9C1",
+          highlightColor: "#EAE0C8", // Using your andai theme background color
+        };
+      default: // light theme
+        return {
+          baseColor: "hsl(210 40% 96.1%)", // Using your light theme muted color
+          highlightColor: "hsl(0 0% 100%)", // Using your light theme background color
+        };
+    }
+  };
+ const {baseColor , highlightColor}  =  getSkeletonColors(theme);
   //   const product = await getProduct(params.handle);
 
   //   if (!product) return notFound();
@@ -54,8 +74,8 @@ export default function ProductPage({ params }) {
 
   return (
     <>
-      <div className="mx-auto max-w-screen-2xl px-4 text-black  bg-[#FFF8E3]">
-        <div className="flex flex-col rounded-lg border  border-neutral-300 p-8 md:p-12 lg:flex-row lg:gap-8 bg-[#FFF8E3]">
+      <div className="mx-auto max-w-screen-2xl px-4 text-black andai:bg-[#FFF8E3] ">
+        <div className="flex flex-col rounded-lg p-8 md:p-12 lg:flex-row lg:gap-8 andai:bg-[#FFF8E3] shadow-md border ">
           <div className="h-full w-full basis-full lg:basis-4/6">
             <Suspense
               fallback={
@@ -65,6 +85,8 @@ export default function ProductPage({ params }) {
               <Gallery
                 image={data?.plugins[0]?.img_url || `/svg/product.svg`}
                 isLoading={loading}
+                baseColor={baseColor}
+                highlightColor={highlightColor}
               />
             </Suspense>
           </div>
@@ -73,6 +95,8 @@ export default function ProductPage({ params }) {
             <ProductDescription
               product={data?.plugins[0]}
               isLoading={loading}
+              baseColor={baseColor}
+              highlightColor={highlightColor}
             />
           </div>
         </div>

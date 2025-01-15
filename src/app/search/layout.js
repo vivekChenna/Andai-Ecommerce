@@ -6,7 +6,7 @@ import Collections from '@/components/layout/search/collections';
 export default function SearchLayout({ children }) {
   return (
     <>
-      <div className="mx-auto flex max-w-screen-2xl flex-col gap-8 px-4 pb-4 text-black md:flex-row dark:text-white bg-[#FFF8E3]">
+      <div className="mx-auto flex max-w-screen-2xl flex-col gap-8 px-4 pb-4 text-black md:flex-row dark:text-white">
         <div className="order-first w-full flex-none md:max-w-[125px]">
           {/* <Collections /> */}
         </div>

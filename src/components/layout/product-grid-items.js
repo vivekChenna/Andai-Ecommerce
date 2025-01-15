@@ -5,7 +5,7 @@ import Link from "next/link";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-export default function ProductGridItems({ products, isLoading }) {
+export default function ProductGridItems({ products, isLoading ,  baseColor, highlightColor }) {
   const skeletonItems = new Array(9).fill(null);
   return (
     <>
@@ -19,7 +19,7 @@ export default function ProductGridItems({ products, isLoading }) {
               <div className="relative inline-block h-full w-full">
                 <Skeleton
                   containerClassName="h-full w-full"
-                  baseColor="#E8D9C1" highlightColor="#EAE0C8"
+                  baseColor={baseColor} highlightColor={highlightColor}
                   style={{ height: "100%", width: "100%" }}
                 />
               </div>

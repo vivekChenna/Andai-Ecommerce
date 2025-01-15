@@ -3,12 +3,12 @@
 import Search from "../layout/navbar/search";
 export default function SearchFeature() {
   return (
-    <section className="py-20 px-4 md:px-6 lg:px-8 bg-white">
+    <section className="py-20 px-4 md:px-6 lg:px-8 dark:text-white andai:bg-white ">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8 dark:text-white">
           Find the Perfect AI Plugin
         </h2>
-        <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+        <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto  dark:text-white">
   Our intelligent search understands natural language. Simply describe
   what you&apos;re looking for, and we&apos;ll find the right AI plugin for you.
 </p>

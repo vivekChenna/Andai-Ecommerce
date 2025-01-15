@@ -1,62 +1,41 @@
 import Link from "next/link";
-
 import FooterMenu from "@/components/layout/footer-menu";
-import LogoSquare from "@/components/logo-square";
-// import { getMenu } from 'lib/shopify';
 import { Suspense } from "react";
-
-// const { COMPANY_NAME, SITE_NAME } = process.env;
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const copyrightDate = 2024 + (currentYear > 2024 ? `-${currentYear}` : "");
   const skeleton =
     "w-full h-6 animate-pulse rounded bg-neutral-200 dark:bg-neutral-700";
-  //   const menu = await getMenu('next-js-frontend-footer-menu');
-  //   const copyrightName = COMPANY_NAME || SITE_NAME || '';
 
   const menu = [
-    {
-      path: "/",
-      title: "Home",
-    },
-    {
-      path: "/about",
-      title: "About",
-    },
-    {
-      path: "/terms-conditions",
-      title: "Terms & Conditions",
-    },
-    {
-      path: "/shipping-return-policy",
-      title: "Shipping & Return Policy",
-    },
-    {
-      path: "/privacy-policy",
-      title: "Privacy Policy",
-    },
-    {
-      path: "/frequently-asked-questions",
-      title: "FAQ",
-    },
+    { path: "/", title: "Home" },
+    { path: "/about", title: "About" },
+    { path: "/terms-conditions", title: "Terms & Conditions" },
+    { path: "/shipping-return-policy", title: "Shipping & Return Policy" },
+    { path: "/privacy-policy", title: "Privacy Policy" },
+    { path: "/frequently-asked-questions", title: "FAQ" },
   ];
 
   return (
-    <footer className="text-sm text-white bg-gray-800">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6  border-neutral-200 px-6 py-12 text-sm md:flex-row md:gap-12 md:px-4 min-[1320px]:px-0 dark:border-neutral-700">
+    <footer className="text-sm bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 border-b border-neutral-200 px-6 py-10 text-sm md:flex-row md:gap-12 md:px-4 min-[1320px]:px-0 dark:border-neutral-700">
+        {/* Logo Section */}
         <div>
           <Link
-            className="flex items-center gap-2 text-black md:pt-1 dark:text-white"
+            className="flex items-center gap-2 text-gray-800 dark:text-gray-200"
             href="/"
           >
             <img
-              src="https://andai.co.in/images/logo.png"
-              className="w-10 h-10"
+              src="/andai.png"
+              className="w-10 h-10 rounded"
+              alt="AndAI Logo"
             />
-            <span className="uppercase font-medium">{"AndAI"}</span>
+            <span className="uppercase font-semibold text-lg">AndAI</span>
           </Link>
         </div>
+
+        {/* Menu Section */}
         <Suspense
           fallback={
             <div className="flex h-[188px] w-[200px] flex-col gap-2">
@@ -71,31 +50,29 @@ export default function Footer() {
         >
           <FooterMenu menu={menu} />
         </Suspense>
+
+        {/* Subscribe Section */}
         <div className="md:ml-auto">
-        <Link href={`https://share.hsforms.com/1xnAsoonbSDKLmfRgEq9XQwrplpw`} target="_blank" >
-        <button
-          className=" bg-black py-1.5 px-4 hover:bg-black/80 transition-all ease-in-out duration-200 rounded-md text-white text-sm font-medium"
-        >
-          SUBSCRIBE
-        </button>
-      </Link>
+          <Link
+            href={`https://share.hsforms.com/1xnAsoonbSDKLmfRgEq9XQwrplpw`}
+            target="_blank"
+          >
+            <button className="bg-gray-800 py-2 px-6 rounded-md text-white hover:bg-gray-700 transition-all duration-200 dark:bg-gray-200 dark:text-gray-800 dark:hover:bg-gray-300 font-medium">
+              Subscribe
+            </button>
+          </Link>
         </div>
       </div>
-      <div className="border-t border-neutral-300 py-6 text-sm text-white font-medium">
-        <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-1 px-4 md:flex-row md:gap-0 md:px-4 min-[1320px]:px-0">
-          <p>
-            &copy; {copyrightDate} {"AND AI, Inc."}{" "}
-            <span className=" px-1">All rights reserved.</span>
-          </p>
-          <hr className="mx-4 hidden h-4 w-[1px] border-l border-neutral-400 md:inline-block" />
-          <p>Designed in India</p>
-          {/* <p className="md:ml-auto">
-            <a href="https://vercel.com" className="text-black dark:text-white">
-              Crafted by ▲ Vercel
-            </a>
-          </p> */}
-        </div>
-      </div>
+
+      {/* Footer Bottom Section */}
+      <div className="py-6 text-center text-sm font-medium">
+  <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-4 px-4 md:flex-row md:justify-between min-[1320px]:px-0  border-neutral-200 dark:border-neutral-700">
+    <p className="text-gray-600 dark:text-gray-300">
+      &copy; {copyrightDate} <strong>AND AI, Inc.</strong> All rights reserved.
+    </p>
+    <p className="text-gray-600 dark:text-gray-300">Designed in India</p>
+  </div>
+</div>
     </footer>
   );
 }

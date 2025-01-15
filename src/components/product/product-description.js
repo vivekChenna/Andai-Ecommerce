@@ -8,15 +8,20 @@ import Link from "next/link";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-export function ProductDescription({ product, isLoading }) {
+export function ProductDescription({
+  product,
+  isLoading,
+  baseColor,
+  highlightColor,
+}) {
   return (
     <>
-      <div className="mb-6 flex flex-col  text-black">
+      <div className="mb-6 flex flex-col  text-black dark:text-white">
         <h1 className="mb-2 md:text-4xl text-xl font-medium">
           {isLoading ? (
             <Skeleton
-              baseColor="#E8D9C1"
-              highlightColor="#EAE0C8"
+              baseColor={baseColor}
+              highlightColor={highlightColor}
               width={320}
             />
           ) : (
@@ -27,8 +32,8 @@ export function ProductDescription({ product, isLoading }) {
           <div className="mr-auto ">
             {isLoading ? (
               <Skeleton
-                baseColor="#E8D9C1"
-                highlightColor="#EAE0C8"
+                baseColor={baseColor}
+                highlightColor={highlightColor}
                 circle
                 width={50}
                 height={50}
@@ -52,8 +57,8 @@ export function ProductDescription({ product, isLoading }) {
           <div className=" mr-auto">
             {isLoading ? (
               <Skeleton
-                baseColor="#E8D9C1"
-                highlightColor="#EAE0C8"
+                baseColor={baseColor}
+                highlightColor={highlightColor}
                 circle={true}
                 width={50}
                 height={50}
@@ -72,8 +77,8 @@ export function ProductDescription({ product, isLoading }) {
           <div className="mr-auto">
             {isLoading ? (
               <Skeleton
-                baseColor="#E8D9C1"
-                highlightColor="#EAE0C8"
+                baseColor={baseColor}
+                highlightColor={highlightColor}
                 circle
                 height={50}
                 width={50}
@@ -90,16 +95,16 @@ export function ProductDescription({ product, isLoading }) {
       </div>
 
       {isLoading ? (
-        <Skeleton baseColor="#E8D9C1" highlightColor="#EAE0C8" />
+        <Skeleton baseColor={baseColor} highlightColor={highlightColor} />
       ) : (
         <div className="border border-neutral-600" />
       )}
 
-      <div className=" font-medium mt-2">
+      <div className=" font-medium mt-2 dark:text-white">
         {isLoading ? (
           <Skeleton
-            baseColor="#E8D9C1"
-            highlightColor="#EAE0C8"
+            baseColor={baseColor}
+            highlightColor={highlightColor}
             height={30}
             count={5}
           />

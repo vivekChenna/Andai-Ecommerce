@@ -9,23 +9,23 @@ export default function Marketplace() {
   const router  = useRouter();
 
   return (
-    <section className="py-20 px-4 md:px-6 lg:px-8 bg-white">
+    <section className="py-20 px-4 md:px-6 lg:px-8  andai:bg-white">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-12 dark:text-white">
           AI Marketplace
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           <div>
-            <h3 className="text-2xl font-semibold mb-4 text-black">
+            <h3 className="text-2xl font-semibold mb-4 text-black dark:text-white">
               Discover Top AI Plugins
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="text-gray-600 mb-6 dark:text-white">
               Our AI Marketplace offers a curated selection of the best AI
               plugins for various use cases. Whether you&apos;re looking to enhance
               your customer service, optimize your operations, or gain deeper
               insights from your data, we&apos;ve got you covered.
             </p>
-            <ul className="space-y-2 text-black">
+            <ul className="space-y-2 text-black dark:text-white">
               <li className="flex items-center">
                 <ShoppingBag className="h-5 w-5 mr-2 text-blue-500" /> Wide
                 range of AI solutions
@@ -75,7 +75,7 @@ export default function Marketplace() {
         <div className="text-center">
           <button
             size="lg"
-            className="bg-black text-white py-2 px-5 rounded-md font-medium transition-colors ease-in-out duration-300 hover:bg-black/80"
+            className="bg-black dark:bg-white dark:text-black text-white py-2 px-5 rounded-md font-medium transition-colors ease-in-out duration-300 hover:bg-black/80"
             onClick={() => {
               router.push("/search");
             }}

@@ -10,7 +10,7 @@ import { Suspense } from "react";
 
 export default function Home() {
   return (
-    <main className="bg-[#FFF8E3]">
+    <main className="">
       <Hero />
       <Features />
       <Suspense fallback={<SearchSkeleton />}>

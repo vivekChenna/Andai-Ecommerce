@@ -55,18 +55,44 @@ export default function Search({placeholder , py}) {
       onSubmit={onSubmit}
       className="w-max-[550px] relative w-full lg:w-80 xl:w-full"
     >
-      <input
-        key={searchParams?.get("q")}
-        type="text"
-        name="search"
-        placeholder={placeholder ? placeholder : "Search for plugins..."}
-        autoComplete="off"
-        defaultValue={searchParams?.get("q") || ""}
-        className={`w-full rounded-lg border bg-white px-4 ${py ? py : "py-2"} text-sm text-neutral-800 placeholder:text-neutral-500 shadow-md dark:border-neutral-700 dark:bg-neutral-900 dark:text-white dark:placeholder:text-neutral-400 transition-all duration-200  focus:outline-none hover:shadow-lg`}
-      />
+    <input
+  key={searchParams?.get("q")}
+  type="text"
+  name="search"
+  placeholder={placeholder ? placeholder : "Search for plugins..."}
+  autoComplete="off"
+  defaultValue={searchParams?.get("q") || ""}
+  className={`
+    w-full
+    rounded-lg
+    border
+    px-4
+    ${py ? py : "py-2"}
+    text-sm
+    text-neutral-800
+    placeholder:text-neutral-500
+    bg-white
+    dark:bg-neutral-800
+    dark:text-white
+    dark:placeholder:text-neutral-400
+    andai:placeholder:text-neutral-400
+    border-neutral-500
+    dark:border-neutral-600
+    andai:bg-neutral-800
+    andai:text-white
+
+     focus:ring-2
+     focus:ring-zinc-500
+     focus:border-zinc-500
+    focus:outline-none
+    transition-all
+    `}
+ />
+
+
 
       <div className="absolute right-0 top-0 mr-3 flex h-full items-center">
-        <MagnifyingGlassIcon className="h-4" />
+        <MagnifyingGlassIcon className="h-5 text-gray-500" />
       </div>
     </form>
   );

@@ -7,10 +7,10 @@ export default function Hero() {
   return (
     <section className="py-20 px-4 md:px-6 lg:px-8 text-center">
       <div className="container mx-auto">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6 dark:text-white">
           Empower Your Business with AI Solutions
         </h1>
-        <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+        <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto dark:text-white">
           <span className="">Andaihub</span> provides cutting-edge AI workflows, intelligent agents, advanced
           chatbots, easy-to-integrate AI Plugins, and a comprehensive AI
           Marketplace to revolutionize your operations.
@@ -18,7 +18,7 @@ export default function Hero() {
         <div className="flex justify-center space-x-4">
           <button
             size="lg"
-            className="bg-black text-white  py-[9px] active:scale-75 px-6 rounded-md font-medium transition-all text-lg ease-in-out duration-300 hover:bg-black/80"
+            className="bg-black dark:bg-white dark:text-black text-white  py-[9px] active:scale-75 px-6 rounded-md font-medium transition-all text-lg ease-in-out duration-300 hover:bg-black/80"
             onClick={() => {
               router.push("/latest");
             }}

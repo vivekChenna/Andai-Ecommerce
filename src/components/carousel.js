@@ -39,7 +39,7 @@ export function Carousel() {
               <Link
                 // href={`/product/${plugin.handle}`}
                 href={`/product/${plugin.id}`}
-                className="relative h-full w-full"
+                className="relative h-full w-full "
               >
                 <GridTileImage
                   alt={plugin?.title}

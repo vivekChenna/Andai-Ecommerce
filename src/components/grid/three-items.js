@@ -6,6 +6,8 @@ import Link from "next/link";
 import { GET_HOME_PAGE_PLUGINS } from "@/lib/queries";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useTheme } from "next-themes";
+import { useEffect } from "react";
 
 function ThreeItemGridItem({ item, size, priority }) {
   return (
@@ -42,7 +44,33 @@ function ThreeItemGridItem({ item, size, priority }) {
   );
 }
 
+const getSkeletonColors = (theme) => {
+  switch (theme) {
+    case "dark":
+      return {
+        baseColor: "hsl(217.2 32.6% 17.5%)", // Using your dark theme muted color
+        highlightColor: "hsl(222.2 84% 4.9%)", // Using your dark theme background color
+      };
+    case "andai":
+      return {
+        baseColor: "#E8D9C1",
+        highlightColor: "#EAE0C8", // Using your andai theme background color
+      };
+    default: // light theme
+      return {
+        baseColor: "hsl(210 40% 96.1%)", // Using your light theme muted color
+        highlightColor: "hsl(0 0% 100%)", // Using your light theme background color
+      };
+  }
+};
+
 export function ThreeItemGrid() {
+  const { theme } = useTheme();
+
+  useEffect(() => {
+    getSkeletonColors(theme);
+  }, [theme]);
+  const { baseColor, highlightColor } = getSkeletonColors(theme);
   const { data, loading } = useQuery(GET_HOME_PAGE_PLUGINS, {
     variables: {
       limit: 3,
@@ -57,19 +85,30 @@ export function ThreeItemGrid() {
         {/* 1st */}
 
         <div className="md:col-span-4 md:row-span-2 rounded-lg">
-        <Skeleton baseColor="#E8D9C1" highlightColor="#EAE0C8"  className="relative block aspect-square h-full w-full" />
-
+          <Skeleton
+            baseColor={baseColor}
+            highlightColor={highlightColor}
+            className="relative block aspect-square h-full w-full"
+          />
         </div>
 
         {/* 2nd */}
 
         <div className="md:col-span-2 md:row-span-1 rounded-lg">
-        <Skeleton baseColor="#E8D9C1" highlightColor="#EAE0C8 "   className="relative block aspect-square h-full w-full" />
+          <Skeleton
+            baseColor={baseColor}
+            highlightColor={highlightColor}
+            className="relative block aspect-square h-full w-full"
+          />
         </div>
 
         {/* 3rd */}
         <div className="md:col-span-2 md:row-span-1 rounded-lg">
-        <Skeleton baseColor="#E8D9C1" highlightColor="#EAE0C8"  className="relative block aspect-square h-full w-full" />
+          <Skeleton
+            baseColor={baseColor}
+            highlightColor={highlightColor}
+            className="relative block aspect-square h-full w-full"
+          />
         </div>
       </section>
     );

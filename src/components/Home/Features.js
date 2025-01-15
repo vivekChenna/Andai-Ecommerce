@@ -24,12 +24,12 @@ export default function Features() {
   return (
     <section className="py-20 px-4 md:px-6 lg:px-8">
       <div className="container mx-auto">
-        <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">
+        <h2 className="text-4xl font-bold text-center text-gray-800 mb-12 dark:text-white">
           Our Solutions
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <div key={index} className="bg-white p-6 rounded-lg shadow-md">
+            <div key={index} className="bg-white p-6 rounded-lg shadow-md light:border border-gray-300/45">
               <div className="mb-4">{feature.icon}</div>
               <h3 className="text-xl font-semibold mb-2 text-black">
                 {feature.title}
