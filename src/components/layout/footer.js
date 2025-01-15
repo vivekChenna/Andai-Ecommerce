@@ -1,6 +1,7 @@
 import Link from "next/link";
 import FooterMenu from "@/components/layout/footer-menu";
 import { Suspense } from "react";
+import Image from "next/image";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -26,10 +27,12 @@ export default function Footer() {
             className="flex items-center gap-2 text-gray-800 dark:text-gray-200"
             href="/"
           >
-            <img
+            <Image
               src="/andai.png"
               className="w-10 h-10 rounded"
               alt="AndAI Logo"
+              width={0}
+              height={0}
             />
             <span className="uppercase font-semibold text-lg">AndAI</span>
           </Link>
