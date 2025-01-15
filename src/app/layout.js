@@ -5,7 +5,6 @@ import GraphQlProvider from "@/lib/GraphqlProvider";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { PluginProvider } from "../context/pluginsContext";
 import { ThemeProvider } from "./providers/theme-provider";
-import { ThemeToggle } from "@/components/theme-toggle";
 
 export const metadata = {
   title: "Andai",
