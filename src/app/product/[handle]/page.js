@@ -5,6 +5,7 @@ import { GridTileImage } from "@/components/grid/tile";
 
 // import { GridTileImage } from "@/components/grid/tile";
 import Footer from "@/components/layout/footer";
+import UserModal from "@/components/Modal/UserModal";
 import { Gallery } from "@/components/product/gallery";
 import { ProductDescription } from "@/components/product/product-description";
 import {
@@ -18,31 +19,32 @@ import Link from "next/link";
 // import { getProduct, getProductRecommendations } from 'lib/shopify';
 // import { Image } from 'lib/shopify/types';
 // import Link from "next/link";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 
 export default function ProductPage({ params }) {
+  const [showModal, setShowModal] = useState(false);
 
-  const {theme}= useTheme();
+  const { theme } = useTheme();
   const getSkeletonColors = (theme) => {
     switch (theme) {
       case "dark":
         return {
-          baseColor: "hsl(217.2 32.6% 17.5%)", // Using your dark theme muted color
-          highlightColor: "hsl(222.2 84% 4.9%)", // Using your dark theme background color
+          baseColor: "hsl(217.2 32.6% 17.5%)",
+          highlightColor: "hsl(222.2 84% 4.9%)",
         };
       case "andai":
         return {
           baseColor: "#E8D9C1",
-          highlightColor: "#EAE0C8", // Using your andai theme background color
+          highlightColor: "#EAE0C8",
         };
-      default: // light theme
+      default:
         return {
-          baseColor: "hsl(210 40% 96.1%)", // Using your light theme muted color
-          highlightColor: "hsl(0 0% 100%)", // Using your light theme background color
+          baseColor: "hsl(210 40% 96.1%)",
+          highlightColor: "hsl(0 0% 100%)",
         };
     }
   };
- const {baseColor , highlightColor}  =  getSkeletonColors(theme);
+  const { baseColor, highlightColor } = getSkeletonColors(theme);
   //   const product = await getProduct(params.handle);
 
   //   if (!product) return notFound();
@@ -70,7 +72,7 @@ export default function ProductPage({ params }) {
         id: { _eq: params.handle },
       },
     },
-  });
+  });  
 
   return (
     <>
@@ -97,9 +99,13 @@ export default function ProductPage({ params }) {
               isLoading={loading}
               baseColor={baseColor}
               highlightColor={highlightColor}
+              setShowModal={() => setShowModal(true)}
             />
           </div>
         </div>
+
+        {showModal && <UserModal title={data?.plugins[0]?.title} onClose={() => setShowModal(false)} />}
+
         {/* <RelatedProducts
           id={data?.plugins[0]?.category_id}
           filterId={data?.plugins[0]?.id}

@@ -13,6 +13,7 @@ export function ProductDescription({
   isLoading,
   baseColor,
   highlightColor,
+  setShowModal,
 }) {
   return (
     <>
@@ -40,16 +41,13 @@ export function ProductDescription({
               />
             ) : (
               <div className="w-auto rounded-full bg-[#FFB07C] p-2 text-sm text-white  font-medium">
-                <Link
-                  href={`https://docs.google.com/forms/d/e/1FAIpQLScfOhn111VpB2DB09HYpOSqyh3VKNMHORXyMugR2mndNsNRvw/viewform`}
-                  target="_blank"
+                <button
+                  onClick={() => {
+                    setShowModal();
+                  }}
                 >
-                  {/* <Price
-              amount={product?.amount}
-              currencyCode={product?.currencyCode}
-              /> */}
-                  Pricing
-                </Link>
+                  Request Access
+                </button>
               </div>
             )}
           </div>
