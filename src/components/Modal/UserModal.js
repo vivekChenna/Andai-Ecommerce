@@ -120,7 +120,7 @@ const UserModal = ({ onClose, title, docsURL }) => {
             >
               {loading ? "Submitting" : "Submit"}
               {loading && (
-                <LoaderCircle className=" w-5 h-5 text-white animate-spin" />
+                <RefreshCw  className=" w-5 h-5 text-white animate-spin" />
               )}
             </button>
           </form>
