@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { X, LoaderCircle } from "lucide-react";
+import { X, RefreshCw } from "lucide-react";
 
 const UserModal = ({ onClose, title, docsURL }) => {
   const [formData, setFormData] = useState({
