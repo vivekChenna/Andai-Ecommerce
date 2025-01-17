@@ -104,7 +104,7 @@ export default function ProductPage({ params }) {
           </div>
         </div>
 
-        {showModal && <UserModal title={data?.plugins[0]?.title} onClose={() => setShowModal(false)} />}
+        {showModal && <UserModal title={data?.plugins[0]?.title} docsURL={data?.plugins[0]?.docs_url} onClose={() => setShowModal(false)} />}
 
         {/* <RelatedProducts
           id={data?.plugins[0]?.category_id}

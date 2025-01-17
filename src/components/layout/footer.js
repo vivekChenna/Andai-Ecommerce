@@ -28,13 +28,13 @@ export default function Footer() {
             href="/"
           >
             <Image
-              src="/andai.png"
+              src="/newAndai.jpg"
               className="w-10 h-10 rounded"
               alt="AndAI Logo"
               width={0}
               height={0}
             />
-            <span className="uppercase font-semibold text-lg">AndAI</span>
+            <span className="uppercase font-semibold text-lg">AndAI Platforms Pvt Ltd</span>
           </Link>
         </div>
 
@@ -71,7 +71,7 @@ export default function Footer() {
       <div className="py-6 text-center text-sm font-medium">
   <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-4 px-4 md:flex-row md:justify-between min-[1320px]:px-0  border-neutral-200 dark:border-neutral-700">
     <p className="text-gray-600 dark:text-gray-300">
-      &copy; {copyrightDate} <strong>AND AI, Inc.</strong> All rights reserved.
+      &copy; {copyrightDate} <strong>AndAI Platforms Pvt Ltd, Inc.</strong> All rights reserved.
     </p>
     <p className="text-gray-600 dark:text-gray-300">Designed in India</p>
   </div>

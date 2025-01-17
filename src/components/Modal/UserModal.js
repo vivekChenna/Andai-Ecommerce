@@ -1,8 +1,13 @@
 import React, { useRef, useState } from "react";
 import { X } from "lucide-react";
 
-const UserModal = ({ onClose, title }) => {
-  const [formData, setFormData] = useState({ name: "", email: "" , title:title });
+const UserModal = ({ onClose, title, docsURL }) => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    title: title,
+  });
+  const [loading, setLoading] = useState(false);
   const modalRef = useRef(null);
 
   const handleChange = (e) => {
@@ -10,6 +15,24 @@ const UserModal = ({ onClose, title }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const submitHandler = async (e) => {
+    setLoading(true);
+    e.preventDefault();
+    try {
+      const response = await fetch("/api/mail", {
+        method: "POST",
+        body: JSON.stringify({ ...formData, docsURL: docsURL }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await response.json();
+    } catch (error) {
+      console.log("something went wrong", error);
+    }
+    setLoading(false);
+  };
 
   return (
     <div
@@ -26,8 +49,7 @@ const UserModal = ({ onClose, title }) => {
           <X className=" text-white   sm:w-8 sm:h-8" />
         </button>
         <form
-        action="https://formspree.io/f/xlddvkzd"
-  method="POST"
+          onSubmit={submitHandler}
           className="dark:bg-gray-800 bg-black/70 dark:text-gray-200 rounded-lg shadow-lg p-6 relative flex flex-col"
         >
           <h2 className="text-2xl font-bold mb-1 text-center  dark:text-gray-200 text-white">
@@ -67,7 +89,7 @@ const UserModal = ({ onClose, title }) => {
               autoComplete="off"
             />
           </div>
-          <div className="mb-4 hidden" >
+          <div className="mb-4 hidden">
             <label className="block text-sm font-medium text-white dark:text-gray-300">
               Title
             </label>
@@ -84,6 +106,7 @@ const UserModal = ({ onClose, title }) => {
           </div>
           <button
             type="submit"
+            disabled={loading}
             className="w-full mt-2 bg-black text-white py-2 rounded-md hover:bg-gray-900"
           >
             Submit

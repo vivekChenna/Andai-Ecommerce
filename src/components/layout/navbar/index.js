@@ -66,7 +66,7 @@ export default function Navbar({ isAuthenticated, user }) {
         <div className="flex w-full md:w-1/3">
           <Link href="/" className="mr-2 flex w-full items-center md:w-auto lg:mr-6">
             <Image
-              src="/andai.png"
+              src="/newAndai.jpg"
               alt="Andai Logo"
               width={48}
               height={48}
@@ -112,7 +112,7 @@ export default function Navbar({ isAuthenticated, user }) {
         }`}
         aria-label="System Theme"
       >
-        <Image src={'/andai.png'} width={0} height={0} className="w-6 h-6 object-cover rounded-full" alt="andai"/>
+        <Image src={'/newAndai.jpg'} width={0} height={0} className="w-6 h-6 object-cover rounded-full" alt="andai"/>
       </button>
 
       {/* Light Mode */}
