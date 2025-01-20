@@ -1,6 +1,7 @@
+"use client";
+
 // import { AddToCart } from 'components/cart/add-to-cart';
-import Price from "@/components/price";
-import Link from "next/link";
+// import Price from "@/components/price";
 // import Prose from 'components/prose';
 // import { Product } from 'lib/shopify/types';
 // import { Suspense } from 'react';
@@ -40,15 +41,19 @@ export function ProductDescription({
                 height={50}
               />
             ) : (
-              <div className="w-auto rounded-full bg-[#FFB07C] p-2 text-sm text-white  font-medium">
-                <button
-                  onClick={() => {
-                    setShowModal();
-                  }}
-                >
-                  Request Access
-                </button>
-              </div>
+              <button
+                onClick={() => {
+                  setShowModal();
+                }}
+                className="px-6 py-2.5 rounded-lg font-medium text-sm transition-all duration-200 
+                bg-white text-gray-800 shadow-md hover:shadow-lg hover:scale-105 hover:bg-gray-100 
+                border border-gray-300 hover:border-gray-400 
+                dark:bg-gradient-to-r dark:from-indigo-400 dark:to-purple-400 
+                dark:text-gray-100 dark:hover:from-indigo-300 dark:hover:to-purple-300 
+                dark:border-transparent dark:hover:border-indigo-400"
+              >
+                Request Access
+              </button>
             )}
           </div>
 
@@ -62,13 +67,19 @@ export function ProductDescription({
                 height={50}
               />
             ) : (
-              <a
-                className=" w-auto rounded-full bg-[#FFB07C] p-2 text-sm text-white font-medium"
-                href={product?.docs_url}
-                target="_blank"
+              <button
+                onClick={() => {
+                  window.open(product?.docs_url || "" , "_blank");
+                }}
+                className="px-6 py-2.5 rounded-lg font-medium text-sm transition-all duration-200 
+                bg-white text-gray-800 shadow-md hover:shadow-lg hover:scale-105 hover:bg-gray-100 
+                border border-gray-300 hover:border-gray-400 
+                dark:bg-gradient-to-r dark:from-indigo-400 dark:to-purple-400 
+                dark:text-gray-100 dark:hover:from-indigo-300 dark:hover:to-purple-300 
+                dark:border-transparent dark:hover:border-indigo-400"
               >
                 DOCS
-              </a>
+              </button>
             )}
           </div>
 
@@ -82,11 +93,19 @@ export function ProductDescription({
                 width={50}
               />
             ) : (
-              <div className=" w-auto rounded-full bg-[#FFB07C] p-2 text-sm text-white font-medium">
-                <a href={product?.Web_url} target="_blank">
-                  DEMO
-                </a>
-              </div>
+              <button
+                onClick={() => {
+                  window.open(product?.Web_url || "" , "_blank");
+                }}
+                className="px-6 py-2.5 rounded-lg font-medium text-sm transition-all duration-200 
+                bg-white text-gray-800 shadow-md hover:shadow-lg hover:scale-105 hover:bg-gray-100 
+                border border-gray-300 hover:border-gray-400 
+                dark:bg-gradient-to-r dark:from-indigo-400 dark:to-purple-400 
+                dark:text-gray-100 dark:hover:from-indigo-300 dark:hover:to-purple-300 
+                dark:border-transparent dark:hover:border-indigo-400"
+              >
+                DEMO
+              </button>
             )}
           </div>
         </div>
