@@ -32,7 +32,10 @@ export default function Navbar({ isAuthenticated, user }) {
   useEffect(() => {
     if (isDropdownOpen) {
       const handleOutsideClick = (event) => {
-        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        if (
+          dropdownRef.current &&
+          !dropdownRef.current.contains(event.target)
+        ) {
           setIsDropdownOpen(false);
         }
       };
@@ -64,7 +67,10 @@ export default function Navbar({ isAuthenticated, user }) {
       {/* Logo and Navigation */}
       <div className="flex w-full items-center">
         <div className="flex w-full md:w-1/3">
-          <Link href="/" className="mr-2 flex w-full items-center md:w-auto lg:mr-6">
+          <Link
+            href="/"
+            className="mr-2 flex w-full items-center md:w-auto lg:mr-6"
+          >
             <Image
               src="/newAndai.jpg"
               alt="Andai Logo"
@@ -74,22 +80,21 @@ export default function Navbar({ isAuthenticated, user }) {
             />
           </Link>
           {menu.length ? (
-  <ul className="hidden gap-6 text-sm md:flex md:items-center">
-    {menu.map((item) => (
-      <li key={item.title}>
-        <Link
-          href={item.path}
-          className="relative font-medium text-[16px] px-3 py-1 rounded-md transition-all duration-300 ease-in-out text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white group"
-        >
-          {item.title}
-          {/* Underline Effect */}
-          <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gray-800 dark:bg-white transition-all duration-300 ease-in-out group-hover:w-full"></span>
-        </Link>
-      </li>
-    ))}
-  </ul>
-) : null}
-
+            <ul className="hidden gap-6 text-sm md:flex md:items-center">
+              {menu.map((item) => (
+                <li key={item.title}>
+                  <Link
+                    href={item.path}
+                    className="relative font-medium text-[16px] px-3 py-1 rounded-md transition-all duration-300 ease-in-out text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white group"
+                  >
+                    {item.title}
+                    {/* Underline Effect */}
+                    <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gray-800 dark:bg-white transition-all duration-300 ease-in-out group-hover:w-full"></span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) : null}
         </div>
         {pathname !== "/" && (
           <div className="hidden justify-center md:flex md:w-1/3">
@@ -104,67 +109,79 @@ export default function Navbar({ isAuthenticated, user }) {
       <div className="flex flex-row items-center  sm:space-x-10">
         {/* Theme Switcher */}
         <div className="flex items-center space-x-2 rounded-full bg-gray-800 p-2">
-      {/* System Mode */}
-      <button
-        onClick={() => setTheme("andai")}
-        className={`flex items-center justify-center w-4 h-4 rounded-full ${
-          theme === "andai" ? "bg-gray-700 text-white" : "text-gray-400"
-        }`}
-        aria-label="System Theme"
-      >
-        <Image src={'/newAndai.jpg'} width={0} height={0} className="w-6 h-6 object-cover rounded-full" alt="andai"/>
-      </button>
+          {/* System Mode */}
+          <button
+            onClick={() => setTheme("andai")}
+            className={`flex items-center justify-center w-4 h-4 rounded-full ${
+              theme === "andai" ? "bg-gray-700 text-white" : "text-gray-400"
+            }`}
+            aria-label="System Theme"
+          >
+            <Image
+              src={"/newAndai.jpg"}
+              width={0}
+              height={0}
+              className="w-6 h-6 object-cover rounded-full"
+              alt="andai"
+            />
+          </button>
 
-      {/* Light Mode */}
-      <button
-        onClick={() => setTheme("light")}
-        className={`flex items-center justify-center w-4 h-4 rounded-full ${
-          theme === "light" ? "bg-gray-700 text-white" : "text-gray-400"
-        }`}
-        aria-label="Light Theme"
-      >
-        <Sun className="h-5 w-5" />
-      </button>
+          {/* Light Mode */}
+          <button
+            onClick={() => setTheme("light")}
+            className={`flex items-center justify-center w-4 h-4 rounded-full ${
+              theme === "light" ? "bg-gray-700 text-white" : "text-gray-400"
+            }`}
+            aria-label="Light Theme"
+          >
+            <Sun className="h-5 w-5" />
+          </button>
 
-      {/* Dark Mode */}
-      <button
-        onClick={() => setTheme("dark")}
-        className={`flex items-center justify-center w-4 h-4 rounded-full ${
-          theme === "dark" ? "bg-gray-700 text-white" : "text-gray-400"
-        }`}
-        aria-label="Dark Theme"
-      >
-        <Moon className="h-5 w-5" />
-      </button>
-    </div>
+          {/* Dark Mode */}
+          <button
+            onClick={() => setTheme("dark")}
+            className={`flex items-center justify-center w-4 h-4 rounded-full ${
+              theme === "dark" ? "bg-gray-700 text-white" : "text-gray-400"
+            }`}
+            aria-label="Dark Theme"
+          >
+            <Moon className="h-5 w-5" />
+          </button>
+        </div>
 
         {/* Profile/Authentication */}
-        {isAuthenticated ? (
-          <div className="relative lg:block hidden" ref={dropdownRef}>
-            <button
-              className="rounded-full"
-              onClick={() => setIsDropdownOpen((prev) => !prev)}
-            >
-              <ProfileAvatar name={user?.given_name} imageUrl={user?.picture} />
-            </button>
-            {isDropdownOpen && (
-              <div className="absolute right-0 mt-2 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 z-50 border">
-                <LogoutLink className="block w-full text-center px-4 py-1 text-black min-w-max">
-                  Log out
-                </LogoutLink>
-              </div>
-            )}
-          </div>
-        ) : (
-          <div className="hidden md:flex items-center">
-            <div className="min-w-max mr-3 bg-gray-200 rounded-md px-2 py-1">
-              <LoginLink>Sign in</LoginLink>
+        {
+          isAuthenticated && (
+            <div className="relative lg:block hidden" ref={dropdownRef}>
+              <button
+                className="rounded-full"
+                onClick={() => setIsDropdownOpen((prev) => !prev)}
+              >
+                <ProfileAvatar
+                  name={user?.given_name}
+                  imageUrl={user?.picture}
+                />
+              </button>
+              {isDropdownOpen && (
+                <div className="absolute right-0 mt-2 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 z-50 border">
+                  <LogoutLink className="block w-full text-center px-4 py-1 text-black min-w-max">
+                    Log out
+                  </LogoutLink>
+                </div>
+              )}
             </div>
-            <div className="min-w-max mr-3 bg-gray-200 rounded-md px-2 py-1">
-              <RegisterLink>Sign up</RegisterLink>
-            </div>
-          </div>
-        )}
+          )
+          // ) : (
+          //   <div className="hidden md:flex items-center">
+          //     <div className="min-w-max mr-3 bg-gray-200 rounded-md px-2 py-1">
+          //       <LoginLink>Sign in</LoginLink>
+          //     </div>
+          //     <div className="min-w-max mr-3 bg-gray-200 rounded-md px-2 py-1">
+          //       <RegisterLink>Sign up</RegisterLink>
+          //     </div>
+          //   </div>
+          // )}
+        }
       </div>
     </nav>
   );
