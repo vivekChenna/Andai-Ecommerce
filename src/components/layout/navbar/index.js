@@ -66,7 +66,7 @@ export default function Navbar({ isAuthenticated, user }) {
 
       {/* Logo and Navigation */}
       <div className="flex w-full items-center">
-        <div className="flex w-full md:w-1/3">
+        <div className="flex w-full md:w-1/2">
           <Link
             href="/"
             className="mr-2 flex w-full items-center md:w-auto lg:mr-6"

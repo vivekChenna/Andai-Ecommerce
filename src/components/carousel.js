@@ -8,8 +8,6 @@ import { useQuery } from "@apollo/client";
 import { GET_ALL_PLUGINS } from "@/lib/queries";
 
 export function Carousel() {
-  // Collections that start with `hidden-*` are hidden from the search page.
-  //   const products = await getCollectionProducts({ collection: 'hidden-homepage-carousel' });
 
   const {
     data: carouselPlugins,
