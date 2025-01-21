@@ -13,7 +13,7 @@ export default function Footer() {
     { path: "/", title: "Home" },
     { path: "/about", title: "About" },
     { path: "/terms-conditions", title: "Terms & Conditions" },
-    { path: "/shipping-return-policy", title: "Shipping & Return Policy" },
+    // { path: "/shipping-return-policy", title: "Shipping & Return Policy" },
     { path: "/privacy-policy", title: "Privacy Policy" },
     { path: "/frequently-asked-questions", title: "FAQ" },
   ];
