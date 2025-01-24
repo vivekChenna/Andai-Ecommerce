@@ -11,11 +11,13 @@ export default function Footer() {
 
   const menu = [
     { path: "/", title: "Home" },
-    { path: "/about", title: "About" },
-    { path: "/terms-conditions", title: "Terms & Conditions" },
-    // { path: "/shipping-return-policy", title: "Shipping & Return Policy" },
-    { path: "/privacy-policy", title: "Privacy Policy" },
-    { path: "/frequently-asked-questions", title: "FAQ" },
+    { path: "https://www.andaiplatforms.com/about", title: "About" },
+    { path: "https://www.andaiplatforms.com/info", title: "Contact Us" },
+    {
+      path: "https://www.andaiplatforms.com/terms",
+      title: "Terms & Conditions",
+    },
+    { path: "https://www.andaiplatforms.com/privacy", title: "Privacy Policy" },
   ];
 
   return (
@@ -34,7 +36,9 @@ export default function Footer() {
               width={0}
               height={0}
             />
-            <span className="uppercase font-semibold text-lg">AndAI Platforms Pvt Ltd</span>
+            <span className="uppercase font-semibold text-lg">
+              AndAI Platforms Pvt Ltd
+            </span>
           </Link>
         </div>
 
@@ -69,13 +73,14 @@ export default function Footer() {
 
       {/* Footer Bottom Section */}
       <div className="py-6 text-center text-sm font-medium">
-  <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-4 px-4 md:flex-row md:justify-between min-[1320px]:px-0  border-neutral-200 dark:border-neutral-700">
-    <p className="text-gray-600 dark:text-gray-300">
-      &copy; {copyrightDate} <strong>AndAI Platforms Pvt Ltd, Inc.</strong> All rights reserved.
-    </p>
-    <p className="text-gray-600 dark:text-gray-300">Designed in India</p>
-  </div>
-</div>
+        <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-4 px-4 md:flex-row md:justify-between min-[1320px]:px-0  border-neutral-200 dark:border-neutral-700">
+          <p className="text-gray-600 dark:text-gray-300">
+            &copy; {copyrightDate}{" "}
+            <strong>AndAI Platforms Pvt Ltd, Inc.</strong> All rights reserved.
+          </p>
+          <p className="text-gray-600 dark:text-gray-300">Designed in India</p>
+        </div>
+      </div>
     </footer>
   );
 }
