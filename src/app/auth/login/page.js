@@ -1,10 +1,11 @@
 "use client";
 
 import { signIn, useSession } from "next-auth/react";
+import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { FaLinkedin } from "react-icons/fa";
+import { IoLogoLinkedin } from "react-icons/io5";
 
 export default function Login() {
   const router = useRouter();
@@ -47,7 +48,7 @@ function LoginContent({ session, status, router }) {
           <div className="flex flex-col space-y-4">
             <button
               onClick={() => signIn("google", { callbackUrl })}
-              className="w-full flex items-center justify-center py-3 px-4 bg-white border border-gray-300 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 group"
+              className="w-full flex items-center justify-center py-3 px-4 bg-white border border-gray-300 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 group gap-2"
             >
               <FcGoogle className=" w-6 h-6" />
               <span className="text-gray-700 font-semibold group-hover:text-blue-600 transition-colors">
@@ -57,9 +58,9 @@ function LoginContent({ session, status, router }) {
 
             <button
               onClick={() => signIn("linkedin", { callbackUrl })}
-              className="w-full flex items-center justify-center py-3 px-4 bg-white border border-gray-300 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 group"
+              className="w-full flex items-center justify-center py-3 px-4 bg-white border border-gray-300 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 group gap-2"
             >
-             <FaLinkedin className=" w-6 h-6"/>
+             <Image width={0} height={0} alt="linkedin" src={`/linkedin.png`} className=" w-7 "/>
               <span className="text-gray-700 font-semibold group-hover:text-blue-800 transition-colors">
                 Continue with LinkedIn
               </span>
