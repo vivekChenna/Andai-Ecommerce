@@ -3,11 +3,13 @@
 import { signIn, useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect } from "react";
+import { FcGoogle } from "react-icons/fc";
+import { FaLinkedin } from "react-icons/fa";
 
 export default function Login() {
   const router = useRouter();
   const { data: session, status } = useSession();
-  
+
   return (
     <Suspense fallback={<p>Loading...</p>}>
       <LoginContent session={session} status={status} router={router} />
@@ -25,8 +27,6 @@ function LoginContent({ session, status, router }) {
       router.replace(callbackUrl);
     }
   }, [status, callbackUrl, router]);
-
- 
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
@@ -49,9 +49,7 @@ function LoginContent({ session, status, router }) {
               onClick={() => signIn("google", { callbackUrl })}
               className="w-full flex items-center justify-center py-3 px-4 bg-white border border-gray-300 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 group"
             >
-              <svg className="h-6 w-6 mr-3 group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
-                <path d="M12.545 10.239v3.821h5.445c-0.712..." fill="#4285F4" />
-              </svg>
+              <FcGoogle className=" w-6 h-6" />
               <span className="text-gray-700 font-semibold group-hover:text-blue-600 transition-colors">
                 Continue with Google
               </span>
@@ -61,9 +59,7 @@ function LoginContent({ session, status, router }) {
               onClick={() => signIn("linkedin", { callbackUrl })}
               className="w-full flex items-center justify-center py-3 px-4 bg-white border border-gray-300 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 group"
             >
-              <svg className="h-6 w-6 mr-3 group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
-                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 ..." fill="#0077B5" />
-              </svg>
+             <FaLinkedin className=" w-6 h-6"/>
               <span className="text-gray-700 font-semibold group-hover:text-blue-800 transition-colors">
                 Continue with LinkedIn
               </span>
