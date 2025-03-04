@@ -8,8 +8,8 @@ WORKDIR /app
 # Copy package files
 COPY package.json package-lock.json ./
 
-# Install dependencies using npm install instead of npm ci
-RUN npm install ----omit=dev
+# Install dependencies
+RUN npm install --omit=dev
 
 # Build the application for production
 FROM base AS builder
@@ -25,9 +25,10 @@ RUN npm run build --no-lint
 FROM base AS production
 WORKDIR /app
 
+# Set environment to production
 ENV NODE_ENV=production
 
-# Copy necessary files
+# Copy necessary files from the build stage
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/next.config.mjs ./
 COPY --from=builder /app/.next/standalone ./
@@ -36,5 +37,5 @@ COPY --from=builder /app/.next/static ./.next/static
 # Expose port
 EXPOSE 9015
 
-# Start the application
-CMD ["node", "server.js"]
+# Start the Next.js App (Standalone Mode)
+CMD ["node", ".next/standalone/server.js"]
