@@ -6,10 +6,10 @@ FROM base AS deps
 WORKDIR /app
 
 # Copy package files
-COPY package.json package-lock.json ./
+COPY package.json package-lock.json* ./
 
 # Install dependencies
-RUN npm install --omit=dev
+RUN npm ci --omit=dev
 
 # Build the application for production
 FROM base AS builder
@@ -17,9 +17,9 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Build application and skip ESLint checks
+# Build application
 ENV NEXT_TELEMETRY_DISABLED=1
-RUN npm run build --no-lint
+RUN npm run build
 
 # Production image
 FROM base AS production
@@ -38,4 +38,4 @@ COPY --from=builder /app/.next/static ./.next/static
 EXPOSE 9015
 
 # Start the Next.js App (Standalone Mode)
-CMD ["node", ".next/standalone/server.js"]
+CMD ["node", "server.js"]
