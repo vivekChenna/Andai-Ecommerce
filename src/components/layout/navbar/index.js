@@ -9,19 +9,17 @@ import { useTheme } from "next-themes";
 import { Sun, Moon, Palette, Monitor } from "lucide-react";
 import MobileMenu from "./mobile-menu";
 import Search, { SearchSkeleton } from "./search";
-import {
-  RegisterLink,
-  LoginLink,
-  LogoutLink,
-} from "@kinde-oss/kinde-auth-nextjs/components";
+import { signOut, useSession } from "next-auth/react";
 import { ProfileAvatar } from "@/components/profile-avatar";
 
-export default function Navbar({ isAuthenticated, user }) {
+export default function Navbar() {
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const dropdownRef = useRef(null);
+
+  const { data: session, status } = useSession();
 
   // Ensure the component is client-rendered
   useEffect(() => {
@@ -55,12 +53,18 @@ export default function Navbar({ isAuthenticated, user }) {
   // Prevent rendering theme-dependent UI until mounted
   if (!mounted) return null;
 
-  return (
+  const hideNavbarRoutes = ["/auth/login"];
+  const shouldShowNavbar = hideNavbarRoutes.includes(pathname);
+
+  return shouldShowNavbar ? null : (
     <nav className="relative flex items-center justify-between p-4 lg:px-6">
       {/* Mobile Menu */}
       <div className="block flex-none md:hidden ">
         <Suspense fallback={null}>
-          <MobileMenu menu={menu} isAuthenticated={isAuthenticated} />
+          <MobileMenu
+            menu={menu}
+            isAuthenticated={status === "authenticated"}
+          />
         </Suspense>
       </div>
 
@@ -151,22 +155,27 @@ export default function Navbar({ isAuthenticated, user }) {
 
         {/* Profile/Authentication */}
         {
-          isAuthenticated && (
+          status === "authenticated" && (
             <div className="relative lg:block hidden" ref={dropdownRef}>
               <button
                 className="rounded-full"
                 onClick={() => setIsDropdownOpen((prev) => !prev)}
               >
                 <ProfileAvatar
-                  name={user?.given_name}
-                  imageUrl={user?.picture}
+                  name={session?.user?.name}
+                  imageUrl={session?.user?.image}
                 />
               </button>
               {isDropdownOpen && (
                 <div className="absolute right-0 mt-2 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 z-50 border">
-                  <LogoutLink className="block w-full text-center px-4 py-1 text-black min-w-max">
+                  <button
+                    onClick={() => {
+                      signOut();
+                    }}
+                    className="block w-full text-center px-4 py-1 text-black min-w-max"
+                  >
                     Log out
-                  </LogoutLink>
+                  </button>
                 </div>
               )}
             </div>

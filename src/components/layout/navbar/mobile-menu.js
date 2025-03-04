@@ -4,14 +4,15 @@ import { Dialog, Transition } from "@headlessui/react";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Fragment, Suspense, useEffect, useState } from "react";
-import {
-  RegisterLink,
-  LoginLink,
-  LogoutLink,
-} from "@kinde-oss/kinde-auth-nextjs/components";
+// import {
+//   RegisterLink,
+//   LoginLink,
+//   LogoutLink,
+// } from "@kinde-oss/kinde-auth-nextjs/components";
 
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Search, { SearchSkeleton } from "./search";
+import { signOut } from "next-auth/react";
 
 export default function MobileMenu({ menu, isAuthenticated }) {
   const pathname = usePathname();
@@ -80,7 +81,7 @@ export default function MobileMenu({ menu, isAuthenticated }) {
                     <Search />
                   </Suspense>
                 </div>
-                {!isAuthenticated && (
+                {/* {!isAuthenticated && (
                   <div className=" flex flex-col">
                     <LoginLink className="py-2 text-xl text-black transition-colors hover:text-neutral-500 dark:text-white">
                       Sign in
@@ -89,7 +90,7 @@ export default function MobileMenu({ menu, isAuthenticated }) {
                       Sign up
                     </RegisterLink>
                   </div>
-                )}
+                )} */}
                 {menu.length ? (
                   <ul className="flex w-full flex-col">
                     {menu.map((item) => (
@@ -104,9 +105,14 @@ export default function MobileMenu({ menu, isAuthenticated }) {
                     ))}
                   </ul>
                 ) : null}
-                <LogoutLink className="py-2 text-xl text-black transition-colors hover:text-neutral-500 mt-4">
-                Log out
-              </LogoutLink>
+                <button
+                  onClick={() => {
+                    signOut();
+                  }}
+                  className="text-xl text-black transition-colors hover:text-neutral-500 "
+                >
+                  Log out
+                </button>
               </div>
             </Dialog.Panel>
           </Transition.Child>

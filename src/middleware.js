@@ -1,17 +1,34 @@
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import { NextRequest, NextResponse } from "next/server";
+import { withAuth } from "next-auth/middleware";
+import { NextResponse } from "next/server";
 
-export default async function middleware(req) {
-  const { getUser } = getKindeServerSession();
+export default withAuth(
+  function middleware(req) {
+    const pathname = req.nextUrl.pathname;
+    const token = req.nextauth?.token;
 
-  const user = await getUser();
 
-  if (!user) {
-    return NextResponse.redirect(new URL("/api/auth/login", req.url));
+    if (!token && pathname.startsWith("/product")) {
+      const callbackUrl = encodeURIComponent(req.nextUrl.pathname);
+      return NextResponse.redirect(
+        new URL(`/auth/login?callbackUrl=${callbackUrl}`, req.url)
+      );
+    }
+
+    if (token) {
+      if (pathname.startsWith("/auth/login")) {
+    
+        return NextResponse.redirect(new URL(`/`, req.url));
+      }
+    }
+
+    return NextResponse.next();
+  },
+  {
+    callbacks: {
+      authorized: ({ token }) => true,
+    },
   }
-
-  return NextResponse.next();
-}
+);
 
 export const config = {
   matcher: ["/product/:path*"],

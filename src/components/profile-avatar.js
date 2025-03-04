@@ -2,7 +2,7 @@ import Image from "next/image"
 
 
 export function ProfileAvatar({ name, imageUrl }) {
-  if (imageUrl && imageUrl?.includes('avatars.githubusercontent.com')) {
+ if (imageUrl) {
     return (
       <Image
         src={imageUrl}
@@ -15,9 +15,6 @@ export function ProfileAvatar({ name, imageUrl }) {
   }
 
   const initial = name.charAt(0).toUpperCase()
-
-  // console.log('initial ' , initial);
-  
 
   return (
     <div className="flex h-8 w-8 items-center justify-center rounded-full andai:bg-black light:bg-black dark:bg-white andai:text-white light:text-white dark:text-black  text-primary-foreground font-semibold">
