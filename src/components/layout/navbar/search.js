@@ -1,12 +1,13 @@
 "use client";
 
 import { usePlugins } from "@/context/pluginsContext";
+import { FilterPlugins } from "@/lib/FilterPlugins";
 import { createUrl } from "@/lib/utils";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 // import { createUrl } from 'lib/utils';
 import { useRouter, useSearchParams } from "next/navigation";
 
-export default function Search({placeholder , py}) {
+export default function Search({ placeholder, py }) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -17,26 +18,32 @@ export default function Search({placeholder , py}) {
     const val = e.target;
     const search = val.search;
 
-    const response = await fetch(
-      "https://sigma.andaihub.com/v1/workflows/run",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer app-cms2cAAeQic9tAemM6gI5efa",
-        },
+    // const response = await fetch(
+    //   "https://sigma.andaihub.com/v1/workflows/run",
+    //   {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       Authorization: "Bearer app-cms2cAAeQic9tAemM6gI5efa",
+    //     },
 
-        body: JSON.stringify({
-          inputs: {
-            user_query: search?.value,
-          },
-          user: "abc-123",
-        }),
-      }
-    );
+    //     body: JSON.stringify({
+    //       inputs: {
+    //         user_query: search?.value,
+    //       },
+    //       user: "abc-123",
+    //     }),
+    //   }
+    // );
 
-    const jsonData = await response.json();
-    setPluginsText(jsonData?.data?.outputs?.text);
+    // const jsonData = await response.json();
+
+    const pluginsResponse = await FilterPlugins(search?.value);
+
+
+    const pluginsData = pluginsResponse?.choices[0]?.message?.content;
+
+    setPluginsText(pluginsData);
 
     const newParams = new URLSearchParams(searchParams.toString());
 
@@ -55,14 +62,14 @@ export default function Search({placeholder , py}) {
       onSubmit={onSubmit}
       className="w-max-[550px] relative w-full lg:w-80 xl:w-full"
     >
-    <input
-  key={searchParams?.get("q")}
-  type="text"
-  name="search"
-  placeholder={placeholder ? placeholder : "Search for plugins..."}
-  autoComplete="off"
-  defaultValue={searchParams?.get("q") || ""}
-  className={`
+      <input
+        key={searchParams?.get("q")}
+        type="text"
+        name="search"
+        placeholder={placeholder ? placeholder : "Search for plugins..."}
+        autoComplete="off"
+        defaultValue={searchParams?.get("q") || ""}
+        className={`
     w-full
     rounded-lg
     border
@@ -87,9 +94,7 @@ export default function Search({placeholder , py}) {
     focus:outline-none
     transition-all
     `}
- />
-
-
+      />
 
       <div className="absolute right-0 top-0 mr-3 flex h-full items-center">
         <MagnifyingGlassIcon className="h-5 text-gray-500" />
